@@ -23,14 +23,14 @@ export const JInput: React.FC<
 export const JAddress: React.FC<
   Omit<InputProps, 'onChange' | 'value'> &
     PropType<Field<string>, 'props'> & {
-      onItemSelect: (tui: string) => void;
+      onItemSelect: (addr: T_ADDR_LOOKUP) => void;
       data: T_ADDR_LOOKUP[];
     }
 > = ({ onChange, onItemSelect, data, ...props }) => {
   const toggleMenu = () => {};
   const [selected, selectedSet] = useState(false);
   const onItemSelect_ = (addr: T_ADDR_LOOKUP) => {
-    onItemSelect(addr.tui);
+    onItemSelect(addr);
     selectedSet(true);
     onChange(addr.label);
   };

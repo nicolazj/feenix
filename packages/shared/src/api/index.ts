@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-import {
-    T_ADDR_LOOKUP, T_AUTH_RESP, T_Device, T_Occurrence, T_Profile
-} from '../types';
+import { T_ADDR_LOOKUP, T_ADDR_PREQUAL } from '../types';
 
 const proxy = 'https://stcoorfi73.execute-api.ap-southeast-2.amazonaws.com/dev';
 
@@ -35,7 +33,9 @@ const address = {
     return data;
   },
   prequal: async (id: string) => {
-    const { data } = await instance.get(`/addressPrequal/${id}`);
+    const { data } = await instance.get<T_ADDR_PREQUAL>(
+      `/addressPrequal/${id}`
+    );
     return data;
   },
 };

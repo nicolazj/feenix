@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
-import { Dimensions, View } from 'react-native';
-import { Button } from 'react-native-ui-kitten';
-import { useTransition } from 'react-spring';
-import { animated } from 'react-spring/native';
+import { Platform, View } from 'react-native';
+import { animated, useTransition } from 'react-spring';
 
-const AnimatedView = animated(View);
+import useDimensions from '../hooks/useDimensions';
 
-const { width } = Dimensions.get('window');
-console.log(width);
-// const Screen: React.FC = (props: any) => {
-//   return (
-//     <AnimatedView style={props.style}>
-//       <Text>{props.value}132</Text>
-//     </AnimatedView>
-//   );
-// };
-export const Screen: React.FC = (props: any) => {
+const AnimatedView = (animated(View) as unknown) as typeof View;
+
+export const Screen: React.FC<{ style?: any }> = (props: any) => {
   return (
     <AnimatedView
       style={{
-        ...props.style,
+        transform: props.style.width.interpolate((width: number) =>
+          Platform.select({
+            web: [{ translateX: width + 'px' }],
+            default: [{ translateX: width }],
+          })
+        ),
         position: 'absolute',
         top: 0,
         left: 0,
@@ -31,43 +27,51 @@ export const Screen: React.FC = (props: any) => {
     </AnimatedView>
   );
 };
-export const Screens: React.FC<{ cur: number }> = ({
+
+export const ScreensContext = React.createContext<{
+  cur: number;
+  prev: () => void;
+  next: () => void;
+}>({ cur: 0, next: () => {}, prev: () => {} });
+
+export const Screens: React.FC<{ current?: number; style: any }> = ({
   children,
-  cur,
+  current = 0,
   ...props
 }) => {
+  const { screen } = useDimensions();
+  const [cur, curSet] = useState(current);
   const transitions = useTransition(cur, p => p, {
     from: {
-      opacity: 0,
-      transform: [
-        {
-          translateX: 100,
-        },
-      ],
+      width: screen.width,
     },
     enter: {
-      opacity: 1,
-      transform: [
-        {
-          translateX: 0,
-        },
-      ],
+      width: 0,
     },
     leave: {
-      opacity: 0,
-      transform: [
-        {
-          translateX: -100,
-        },
-      ],
+      width: -screen.width,
     },
   });
+
+  const len = React.Children.count(children);
+
+  const prev = () => {
+    cur > 0 && curSet((cur - 1) % len);
+  };
+
+  const next = () => {
+    cur < len - 1 && curSet((cur + 1) % len);
+  };
   return (
-    <View {...props}>
-      {transitions.map(({ item, props, key }) => {
-        const child = React.Children.toArray(children)[item];
-        return React.cloneElement(child, { key, style: props });
-      })}
-    </View>
+    <ScreensContext.Provider value={{ cur, prev, next }}>
+      <View {...props}>
+        {transitions.map(({ item, props, key }: any) => {
+          const child = React.Children.toArray(children)[
+            item
+          ] as React.ReactElement<any>;
+          return React.cloneElement(child, { key, style: props });
+        })}
+      </View>
+    </ScreensContext.Provider>
   );
 };
