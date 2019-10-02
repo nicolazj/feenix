@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import _debounce from 'lodash.debounce';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Field } from 'react-jeff';
 import { View } from 'react-native';
 import {
@@ -6,6 +7,7 @@ import {
     withStyles
 } from 'react-native-ui-kitten';
 
+import api from './api';
 import { T_ADDR_LOOKUP } from './types';
 
 type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
@@ -28,10 +30,23 @@ export const JAddress_: React.FC<
     Omit<InputProps, 'onChange' | 'value'> &
     PropType<Field<string>, 'props'> & {
       onItemSelect: (addr: T_ADDR_LOOKUP) => void;
-      data: T_ADDR_LOOKUP[];
     }
-> = ({ onChange, onItemSelect, data, ...props }) => {
+> = ({ onChange, onItemSelect, value, ...props }) => {
   const [selected, selectedSet] = useState(false);
+  const [pristine, pristineSet] = useState(true);
+  const [addressOptions, addressOptionsSet] = useState([] as T_ADDR_LOOKUP[]);
+
+  const lookup = useCallback(
+    _debounce(async (address: string) => {
+      const data = await api.address.lookup(address);
+      addressOptionsSet(data.slice(0, 5));
+    }, 1000),
+    []
+  );
+  useEffect(() => {
+    if (value.length > 1 && !pristine) lookup(value);
+  }, [value, pristine]);
+
   const onItemSelect_ = (addr: T_ADDR_LOOKUP) => {
     onItemSelect(addr);
     selectedSet(true);
@@ -40,8 +55,8 @@ export const JAddress_: React.FC<
 
   const renderItem = ({ item: addr }: { item: T_ADDR_LOOKUP }) => {
     return (
-      <ListItem onPress={() => onItemSelect_(addr)}>
-        <Text category="c2" numberOfLines={1}>
+      <ListItem key={addr.tui} onPress={() => onItemSelect_(addr)}>
+        <Text category="c1" numberOfLines={1}>
           {addr.label}
         </Text>
       </ListItem>
@@ -51,19 +66,21 @@ export const JAddress_: React.FC<
     <View>
       <Input
         {...props}
+        value={value}
         onChangeText={text => {
           selectedSet(false);
+          pristineSet(false);
           onChange(text);
         }}
       />
-      {!selected && data.length > 0 && (
+      {!selected && addressOptions.length > 0 && (
         <View
           style={{
             ...props.themedStyle.border,
             borderWidth: 1,
           }}
         >
-          <List data={data} renderItem={renderItem} />
+          <List data={addressOptions} renderItem={renderItem} />
         </View>
       )}
     </View>

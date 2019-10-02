@@ -41,7 +41,7 @@ const StepConfirm = () => {
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
-        <Text category="s1">Confirm order</Text>
+        <Text category="h4">Confirm order</Text>
       </View>
 
       <View style={styles.buttonBlock}>

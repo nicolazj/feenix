@@ -40,9 +40,9 @@ const StepProducts = () => {
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
-        <Text category="s1">Available products</Text>
+        <Text category="h4">Available products</Text>
         <View style={styles.formControl}>
-          {prequal && prequal.availableComponentProducts && (
+          {prequal && prequal.availableComponentProducts.length > 0 ? (
             <JCheckbox
               options={prequal.availableComponentProducts.map(product => ({
                 title: product.product.name,
@@ -50,6 +50,8 @@ const StepProducts = () => {
               }))}
               {...selectedProducts.props}
             />
+          ) : (
+            <Text status="warning">Sorry, no products available</Text>
           )}
         </View>
       </View>

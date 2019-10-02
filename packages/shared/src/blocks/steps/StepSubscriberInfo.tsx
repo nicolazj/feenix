@@ -1,10 +1,9 @@
 import _debounce from 'lodash.debounce';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Input, Layout, Text } from 'react-native-ui-kitten';
+import { View } from 'react-native';
+import { Button, Text } from 'react-native-ui-kitten';
 
-import api from '../../api';
 import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JAddress, JInput } from '../../forms';
@@ -13,7 +12,7 @@ import styles from './styles';
 
 const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI, updateForm, form } = useContext(FormContext);
+  const { updateTUI, updateForm, form,tui } = useContext(FormContext);
 
   const subscriberName = useField({
     defaultValue: form.subscriberName,
@@ -27,19 +26,6 @@ const StepSubscriberInfo = () => {
     defaultValue: form.address,
     required: true,
   });
-
-  const [addressOptions, addressOptionsSet] = useState([] as T_ADDR_LOOKUP[]);
-
-  const lookup = useCallback(
-    _debounce(async (address: string) => {
-      const data = await api.address.lookup(address);
-      addressOptionsSet(data.slice(0, 5));
-    }, 1000),
-    []
-  );
-  useEffect(() => {
-    address.value.length > 1 && lookup(address.value);
-  }, [address.value]);
 
   function onSubmit() {
     updateForm({
@@ -60,27 +46,31 @@ const StepSubscriberInfo = () => {
   return (
     <View style={styles.section}>
       <View>
-        <Text category="s1">Subscriber info</Text>
+        <Text category="h4">Subscriber info</Text>
         <View style={styles.formControl}>
-          <JInput label="Subscriber name" {...subscriberName.props} />
+          <JInput label="Subscriber name" caption="The full name of the subscriber" {...subscriberName.props} />
         </View>
         <View style={styles.formControl}>
-          <JInput label="Customer reference" {...customerReference.props} />
+          <JInput label="Customer reference"  caption="SkyTV Customer Referencer"{...customerReference.props} />
         </View>
         <View style={styles.formControl}>
           <JAddress
             label="Address"
-            data={addressOptions}
             onItemSelect={(addr: T_ADDR_LOOKUP) => {
               updateTUI(addr.tui);
             }}
             {...address.props}
           />
+          <Text category="c1">
+            Full address is required for order, please pick the suffix, level or
+            unit listed. If the wrong address is chosen your order will not
+            process correctly and will be canceled
+          </Text>
         </View>
       </View>
 
       <View style={styles.spacer}></View>
-      <Button disabled={!jform.valid} onPress={goNext}>
+      <Button disabled={!jform.valid || tui.length===0} onPress={goNext}>
         Next
       </Button>
     </View>

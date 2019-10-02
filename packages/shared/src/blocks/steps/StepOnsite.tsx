@@ -50,7 +50,7 @@ const StepOnsite = () => {
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
-        <Text category="s1">On-site Contact</Text>
+        <Text category="h4">On-site Contact</Text>
         <View style={styles.formControl}>
           <JInput label="Name" {...siteContactName.props} />
         </View>

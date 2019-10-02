@@ -44,7 +44,7 @@ const StepContact = () => {
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
-        <Text category="s1">SkyTV Contact Person</Text>
+        <Text category="h4">SkyTV Contact Person</Text>
         <View style={styles.formControl}>
           <JInput label="Contact name" {...orderContactName.props} />
         </View>
