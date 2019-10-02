@@ -12,5 +12,5 @@ _Requirements: [React Native](https://facebook.github.io/react-native/docs/getti
   - `$ cd packages/mobile/ios`
   - `$ pod install`
   - `$ cd -`
-  - `$ yarn web
-  - `$ yarn ios
+  - `$ yarn web`
+  - `$ yarn ios`
