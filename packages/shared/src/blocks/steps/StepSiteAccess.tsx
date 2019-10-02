@@ -3,27 +3,38 @@ import { useField, useForm } from 'react-jeff';
 import { ScrollView, View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
+import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JInput } from '../../forms';
 import styles from './styles';
 
 const StepSiteAccess = () => {
-  const { cur, next, prev } = useContext(ScreensContext);
+  const { next, prev } = useContext(ScreensContext);
+  const { updateForm, form } = useContext(FormContext);
 
-  let termLocation = useField({
-    defaultValue: '',
+  const termLocation = useField({
+    defaultValue: form.termLocation,
+    required: true,
   });
-  let siteAccessInformation = useField({
-    defaultValue: '',
+  const siteAccessInformation = useField({
+    defaultValue: form.siteAccessInformation,
+    required: true,
   });
 
   function onSubmit() {
-    console.log('submit');
+    updateForm({
+      termLocation: termLocation.value,
+      siteAccessInformation: siteAccessInformation.value,
+    });
   }
-  let form = useForm({
+  const jform = useForm({
     fields: [termLocation, siteAccessInformation],
     onSubmit: onSubmit,
   });
+  const goNext = () => {
+    jform.submit();
+    next();
+  };
 
   return (
     <View style={styles.section}>
@@ -33,27 +44,23 @@ const StepSiteAccess = () => {
             label="Circuit Termination Location"
             {...termLocation.props}
           />
+          <Text category="c1">
+            The location where you would like the Fibre box installed
+          </Text>
         </View>
         <View style={styles.formControl}>
           <JInput
             label="Site Access Infomation"
             {...siteAccessInformation.props}
           />
+          <Text category="c1">
+            For example: There is a dog on site please ring first
+          </Text>
         </View>
       </View>
       <View style={styles.buttonBlock}>
-        <Button
-          onPress={() => {
-            prev();
-          }}
-        >
-          Back
-        </Button>
-        <Button
-          onPress={() => {
-            next();
-          }}
-        >
+        <Button onPress={prev}>Back</Button>
+        <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>
       </View>

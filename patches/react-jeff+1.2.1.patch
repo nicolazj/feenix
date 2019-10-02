@@ -1,0 +1,37 @@
+diff --git a/node_modules/react-jeff/dist/react-jeff.js b/node_modules/react-jeff/dist/react-jeff.js
+index 47a329a..88b5e36 100644
+--- a/node_modules/react-jeff/dist/react-jeff.js
++++ b/node_modules/react-jeff/dist/react-jeff.js
+@@ -21,6 +21,7 @@ function isReactSyntheticEvent(value) {
+ function isEmptyValue(value) {
+   if (value === "") { return true; }
+   if (value === null) { return true; }
++  if (Array.isArray(value) && value.length ===0 ) { return true; }
+   if (typeof value === "undefined") { return true; }
+   return false;
+ }
+diff --git a/node_modules/react-jeff/dist/react-jeff.mjs b/node_modules/react-jeff/dist/react-jeff.mjs
+index 35bfa54..4db6cc5 100644
+--- a/node_modules/react-jeff/dist/react-jeff.mjs
++++ b/node_modules/react-jeff/dist/react-jeff.mjs
+@@ -21,6 +21,7 @@ function isReactSyntheticEvent(value) {
+ function isEmptyValue(value) {
+   if (value === "") { return true; }
+   if (value === null) { return true; }
++  if (Array.isArray(value) && value.length ===0 ) { return true; }
+   if (typeof value === "undefined") { return true; }
+   return false;
+ }
+diff --git a/node_modules/react-jeff/dist/react-jeff.umd.js b/node_modules/react-jeff/dist/react-jeff.umd.js
+index d686a5b..58aa9dd 100644
+--- a/node_modules/react-jeff/dist/react-jeff.umd.js
++++ b/node_modules/react-jeff/dist/react-jeff.umd.js
+@@ -24,6 +24,8 @@
+ 	function isEmptyValue(value) {
+ 	  if (value === "") { return true; }
+ 	  if (value === null) { return true; }
++  	  if (Array.isArray(value) && value.length ===0 ) { return true; }
++
+ 	  if (typeof value === "undefined") { return true; }
+ 	  return false;
+ 	}

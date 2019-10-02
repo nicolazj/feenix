@@ -1,4 +1,21 @@
-export interface T_Order {
+export interface T_Form {
+  subscriberName: string;
+  customerReference: string;
+  address: string;
+  termLocation: string;
+  siteAccessInformation: string;
+  siteContactName: string;
+  siteContactNumber: string;
+  siteContactEmail: string;
+  targetDate: string;
+  orderContactName: string;
+  orderContactNumber: string;
+  orderContactEmail: string;
+
+  selectedProducts: string[];
+}
+
+export interface T_Order_Payload {
   addressId: string;
   soldProductId: string;
   tailProductId: string;

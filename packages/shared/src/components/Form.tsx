@@ -1,19 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
 
 import api from '../api';
-import { T_ADDR_PREQUAL, T_Order } from '../types';
+import { T_ADDR_PREQUAL, T_Form } from '../types';
 
-const initForm = {
-  addressId: '',
-  soldProductId: '',
-  tailProductId: '',
-  aim: '',
+const initForm: T_Form = {
   subscriberName: '',
-  isBusiness: '',
+  address: '',
   customerReference: '',
-  tailVariantId: '',
-  demarc: '',
+  termLocation: '',
   siteAccessInformation: '',
   siteContactName: '',
   siteContactNumber: '',
@@ -22,15 +16,14 @@ const initForm = {
   orderContactName: '',
   orderContactNumber: '',
   orderContactEmail: '',
-  existingServiceId: '',
-  existingServiceProvider: '',
+  selectedProducts: [],
 };
 export const FormContext = createContext<{
-  form: T_Order;
+  form: T_Form;
   prequal?: T_ADDR_PREQUAL;
   tui: string;
   updateTUI: (tui: string) => void;
-  updateForm: (form: Partial<T_Order>) => void;
+  updateForm: (form: Partial<T_Form>) => void;
 }>({
   form: initForm,
   tui: '',
@@ -38,7 +31,7 @@ export const FormContext = createContext<{
   updateForm: () => {},
 });
 const Form: React.FC = ({ children }) => {
-  const [form, formSet] = useState<T_Order>(initForm);
+  const [form, formSet] = useState<T_Form>(initForm);
   const [tui, tuiSet] = useState('');
   const [prequal, prequalSet] = useState<T_ADDR_PREQUAL>();
   const updateTUI = (tui: string) => {
@@ -54,7 +47,7 @@ const Form: React.FC = ({ children }) => {
     tui.length > 0 && prequal();
   }, [tui]);
 
-  const updateForm = (newForm: Partial<T_Order>) => {
+  const updateForm = (newForm: Partial<T_Form>) => {
     formSet({ ...form, ...newForm });
   };
   return (

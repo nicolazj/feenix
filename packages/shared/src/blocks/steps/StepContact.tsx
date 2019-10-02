@@ -1,32 +1,45 @@
 import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
+import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JInput } from '../../forms';
 import styles from './styles';
 
 const StepContact = () => {
-  const { cur, next, prev } = useContext(ScreensContext);
-
-  let orderContactName = useField({
-    defaultValue: '',
+  const { next, prev } = useContext(ScreensContext);
+  const { form, updateForm } = useContext(FormContext);
+  const orderContactName = useField({
+    defaultValue: form.orderContactName,
+    required: true,
   });
-  let orderContactNumber = useField({
-    defaultValue: '',
+  const orderContactNumber = useField({
+    defaultValue: form.orderContactNumber,
+    required: true,
   });
-  let orderContactEmail = useField({
-    defaultValue: '',
+  const orderContactEmail = useField({
+    defaultValue: form.orderContactEmail,
+    required: true,
   });
 
   function onSubmit() {
-    console.log('submit');
+    updateForm({
+      orderContactName: orderContactName.value,
+      orderContactNumber: orderContactNumber.value,
+      orderContactEmail: orderContactEmail.value,
+    });
   }
-  let form = useForm({
+  const jform = useForm({
     fields: [orderContactName, orderContactNumber, orderContactEmail],
     onSubmit: onSubmit,
   });
+
+  const goNext = () => {
+    jform.submit();
+    next();
+  };
 
   return (
     <View style={styles.section}>
@@ -43,18 +56,8 @@ const StepContact = () => {
         </View>
       </View>
       <View style={styles.buttonBlock}>
-        <Button
-          onPress={() => {
-            prev();
-          }}
-        >
-          Back
-        </Button>
-        <Button
-          onPress={() => {
-            next();
-          }}
-        >
+        <Button onPress={prev}>Back</Button>
+        <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>
       </View>

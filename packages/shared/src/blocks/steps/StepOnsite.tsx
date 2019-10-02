@@ -3,34 +3,49 @@ import { useField, useForm } from 'react-jeff';
 import { ScrollView, View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
+import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JInput } from '../../forms';
 import styles from './styles';
 
 const StepOnsite = () => {
-  const { cur, next, prev } = useContext(ScreensContext);
+  const { next, prev } = useContext(ScreensContext);
+  const { form, updateForm } = useContext(FormContext);
+  const siteContactName = useField({
+    defaultValue: form.siteContactName,
+    required: true,
+  });
+  const siteContactNumber = useField({
+    defaultValue: form.siteContactNumber,
+    required: true,
+  });
+  const siteContactEmail = useField({
+    defaultValue: form.siteContactEmail,
+    required: true,
+  });
 
-  let siteContactName = useField({
-    defaultValue: '',
-  });
-  let siteContactNumber = useField({
-    defaultValue: '',
-  });
-  let siteContactEmail = useField({
-    defaultValue: '',
-  });
-
-  let targetDate = useField({
-    defaultValue: '',
+  const targetDate = useField({
+    defaultValue: form.targetDate,
+    required: true,
   });
 
   function onSubmit() {
-    console.log('submit');
+    updateForm({
+      siteContactName: siteContactName.value,
+      siteContactNumber: siteContactNumber.value,
+      siteContactEmail: siteContactEmail.value,
+      targetDate: targetDate.value,
+    });
   }
-  let form = useForm({
+  const jform = useForm({
     fields: [siteContactName, siteContactNumber, siteContactEmail, targetDate],
     onSubmit: onSubmit,
   });
+
+  const goNext = () => {
+    jform.submit();
+    next();
+  };
 
   return (
     <View style={styles.section}>
@@ -57,11 +72,7 @@ const StepOnsite = () => {
         >
           Back
         </Button>
-        <Button
-          onPress={() => {
-            next();
-          }}
-        >
+        <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>
       </View>

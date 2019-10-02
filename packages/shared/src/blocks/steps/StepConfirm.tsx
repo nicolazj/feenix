@@ -14,13 +14,13 @@ const StepConfirm = () => {
   const { prequal } = useContext(FormContext);
   const { cur, next, prev } = useContext(ScreensContext);
   const [modalVisible, modalVisibleSet] = useState(false);
-  let orderContactName = useField({
+  const orderContactName = useField({
     defaultValue: '',
   });
-  let orderContactNumber = useField({
+  const orderContactNumber = useField({
     defaultValue: '',
   });
-  let orderContactEmail = useField({
+  const orderContactEmail = useField({
     defaultValue: '',
   });
 

@@ -1,46 +1,56 @@
 import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { ScrollView, View } from 'react-native';
-import { Button, CheckBox, ListItem, Text } from 'react-native-ui-kitten';
+import { View } from 'react-native';
+import { Button, Text } from 'react-native-ui-kitten';
 
 import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
-import { JInput } from '../../forms';
+import { JCheckbox } from '../../forms';
 import styles from './styles';
 
-const Step2 = () => {
-  const { prequal } = useContext(FormContext);
-  const { cur, next, prev } = useContext(ScreensContext);
+const StepProducts = () => {
+  const { prequal, form, updateForm } = useContext(FormContext);
+  const { next, prev } = useContext(ScreensContext);
 
-  let orderContactName = useField({
-    defaultValue: '',
-  });
-  let orderContactNumber = useField({
-    defaultValue: '',
-  });
-  let orderContactEmail = useField({
-    defaultValue: '',
+  const selectedProducts = useField<string[]>({
+    defaultValue: form.selectedProducts,
+    required: true,
+    validations: [
+      value => {
+        let errs = [];
+        if (value.length === 0) errs.push('has at least one prodcut');
+        return errs;
+      },
+    ],
   });
 
   function onSubmit() {
-    console.log('submit');
+    updateForm({
+      selectedProducts: selectedProducts.value,
+    });
   }
-  let form = useForm({
-    fields: [orderContactName, orderContactNumber, orderContactEmail],
+  const jform = useForm({
+    fields: [selectedProducts],
     onSubmit: onSubmit,
   });
-
+  const goNext = () => {
+    jform.submit();
+    next();
+  };
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
         <Text category="s1">Available products</Text>
         <View style={styles.formControl}>
-          {prequal &&
-            prequal.availableComponentProducts.map(product => (
-              <View key={product.product._id}>
-                <CheckBox text={product.product.name}></CheckBox>
-              </View>
-            ))}
+          {prequal && prequal.availableComponentProducts && (
+            <JCheckbox
+              options={prequal.availableComponentProducts.map(product => ({
+                title: product.product.name,
+                value: product.product._id,
+              }))}
+              {...selectedProducts.props}
+            />
+          )}
         </View>
       </View>
       <View style={styles.buttonBlock}>
@@ -51,11 +61,7 @@ const Step2 = () => {
         >
           Back
         </Button>
-        <Button
-          onPress={() => {
-            next();
-          }}
-        >
+        <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>
       </View>
@@ -63,4 +69,4 @@ const Step2 = () => {
   );
 };
 
-export default Step2;
+export default StepProducts;

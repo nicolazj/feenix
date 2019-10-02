@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Field } from 'react-jeff';
 import { View } from 'react-native';
 import {
-    Input, InputProps, List, ListItem, Text, ThemedComponentProps, withStyles
+    CheckBox, Input, InputProps, List, ListItem, Text, ThemedComponentProps,
+    withStyles
 } from 'react-native-ui-kitten';
 
 import { T_ADDR_LOOKUP } from './types';
@@ -16,7 +17,7 @@ export const JInput: React.FC<
     <Input
       {...props}
       onChangeText={text => {
-        onChange(text); // Make sure all of your inputs call `props.onChange` with the new value.
+        onChange(text);
       }}
     />
   );
@@ -52,7 +53,7 @@ export const JAddress_: React.FC<
         {...props}
         onChangeText={text => {
           selectedSet(false);
-          onChange(text); // Make sure all of your inputs call `props.onChange` with the new value.
+          onChange(text);
         }}
       />
       {!selected && data.length > 0 && (
@@ -76,3 +77,35 @@ export const JAddress = withStyles(JAddress_, theme => {
     },
   };
 });
+
+export const JCheckbox: React.FC<
+  PropType<Field<string[]>, 'props'> & {
+    options: {
+      title: string;
+      value: string;
+    }[];
+  }
+> = ({ options, value, onChange }) => {
+  const onChecked = (v: string) => (checked: boolean) => {
+    if (checked) {
+      onChange([...value, v]);
+    } else {
+      onChange(value.filter(val => val !== v));
+    }
+  };
+
+  return (
+    <>
+      {options.map(option => {
+        return (
+          <CheckBox
+            key={option.value}
+            text={option.title}
+            checked={value.includes(option.value)}
+            onChange={onChecked(option.value)}
+          />
+        );
+      })}
+    </>
+  );
+};

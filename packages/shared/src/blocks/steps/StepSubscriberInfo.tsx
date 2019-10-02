@@ -13,45 +13,48 @@ import styles from './styles';
 
 const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI, updateForm } = useContext(FormContext);
+  const { updateTUI, updateForm, form } = useContext(FormContext);
 
-  let subscriberName = useField({
-    defaultValue: '',
+  const subscriberName = useField({
+    defaultValue: form.subscriberName,
     required: true,
   });
-  let customerReference = useField({
-    defaultValue: '',
+  const customerReference = useField({
+    defaultValue: form.customerReference,
     required: true,
   });
-  let address = useField({
-    defaultValue: '',
+  const address = useField({
+    defaultValue: form.address,
     required: true,
   });
-  let [addresses, addressesSet] = useState([] as T_ADDR_LOOKUP[]);
+
+  const [addressOptions, addressOptionsSet] = useState([] as T_ADDR_LOOKUP[]);
 
   const lookup = useCallback(
     _debounce(async (address: string) => {
       const data = await api.address.lookup(address);
-      addressesSet(data.slice(0, 5));
+      addressOptionsSet(data.slice(0, 5));
     }, 1000),
     []
   );
   useEffect(() => {
     address.value.length > 1 && lookup(address.value);
   }, [address.value]);
+
   function onSubmit() {
     updateForm({
       subscriberName: subscriberName.value,
       customerReference: customerReference.value,
+      address: address.value,
     });
   }
-  let form = useForm({
-    fields: [subscriberName, customerReference],
+  const jform = useForm({
+    fields: [subscriberName, customerReference, address],
     onSubmit: onSubmit,
   });
 
   const goNext = () => {
-    form.submit();
+    jform.submit();
     next();
   };
   return (
@@ -67,7 +70,7 @@ const StepSubscriberInfo = () => {
         <View style={styles.formControl}>
           <JAddress
             label="Address"
-            data={addresses}
+            data={addressOptions}
             onItemSelect={(addr: T_ADDR_LOOKUP) => {
               updateTUI(addr.tui);
             }}
@@ -77,7 +80,7 @@ const StepSubscriberInfo = () => {
       </View>
 
       <View style={styles.spacer}></View>
-      <Button disabled={!form.valid} onPress={goNext}>
+      <Button disabled={!jform.valid} onPress={goNext}>
         Next
       </Button>
     </View>
