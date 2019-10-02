@@ -6,6 +6,16 @@ const styles = StyleSheet.create({
   },
   section: {
     padding: 24,
+    flex: 1,
+  },
+  buttonBlock: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  spacer: {
+    flexGrow: 1,
+    flexBasis: 'auto',
+    flexShrink: 1,
   },
 });
 

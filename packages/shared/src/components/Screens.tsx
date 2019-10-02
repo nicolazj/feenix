@@ -41,26 +41,33 @@ export const Screens: React.FC<{ current?: number; style: any }> = ({
 }) => {
   const { screen } = useDimensions();
   const [cur, curSet] = useState(current);
+  const [forward, forwardSet] = useState(true);
   const transitions = useTransition(cur, p => p, {
     from: {
-      width: screen.width,
+      width: forward ? screen.width : -screen.width,
     },
     enter: {
       width: 0,
     },
     leave: {
-      width: -screen.width,
+      width: forward ? -screen.width : screen.width,
     },
   });
 
   const len = React.Children.count(children);
 
   const prev = () => {
-    cur > 0 && curSet((cur - 1) % len);
+    if (cur > 0) {
+      curSet((cur - 1) % len);
+      forwardSet(false);
+    }
   };
 
   const next = () => {
-    cur < len - 1 && curSet((cur + 1) % len);
+    if (cur < len - 1) {
+      curSet((cur + 1) % len);
+      forwardSet(true);
+    }
   };
   return (
     <ScreensContext.Provider value={{ cur, prev, next }}>

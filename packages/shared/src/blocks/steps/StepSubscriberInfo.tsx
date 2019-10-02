@@ -11,9 +11,9 @@ import { JAddress, JInput } from '../../forms';
 import { T_ADDR_LOOKUP } from '../../types';
 import styles from './styles';
 
-const Step1 = () => {
+const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI } = useContext(FormContext);
+  const { updateTUI, updateForm } = useContext(FormContext);
 
   let subscriberName = useField({
     defaultValue: '',
@@ -25,6 +25,7 @@ const Step1 = () => {
   });
   let address = useField({
     defaultValue: '',
+    required: true,
   });
   let [addresses, addressesSet] = useState([] as T_ADDR_LOOKUP[]);
 
@@ -39,7 +40,10 @@ const Step1 = () => {
     address.value.length > 1 && lookup(address.value);
   }, [address.value]);
   function onSubmit() {
-    console.log('submit', subscriberName.value);
+    updateForm({
+      subscriberName: subscriberName.value,
+      customerReference: customerReference.value,
+    });
   }
   let form = useForm({
     fields: [subscriberName, customerReference],
@@ -47,34 +51,37 @@ const Step1 = () => {
   });
 
   const goNext = () => {
-    console.log(form.valid);
+    form.submit();
     next();
   };
   return (
-    <ScrollView style={styles.section}>
-      <Text category="s1">Subscriber info</Text>
-      <View style={styles.formControl}>
-        <JInput label="Subscriber name" {...subscriberName.props} />
+    <View style={styles.section}>
+      <View>
+        <Text category="s1">Subscriber info</Text>
+        <View style={styles.formControl}>
+          <JInput label="Subscriber name" {...subscriberName.props} />
+        </View>
+        <View style={styles.formControl}>
+          <JInput label="Customer reference" {...customerReference.props} />
+        </View>
+        <View style={styles.formControl}>
+          <JAddress
+            label="Address"
+            data={addresses}
+            onItemSelect={(addr: T_ADDR_LOOKUP) => {
+              updateTUI(addr.tui);
+            }}
+            {...address.props}
+          />
+        </View>
       </View>
-      <View style={styles.formControl}>
-        <JInput label="Customer reference" {...customerReference.props} />
-      </View>
-      <View style={styles.formControl}>
-        <JAddress
-          label="Address"
-          data={addresses}
-          onItemSelect={(addr: T_ADDR_LOOKUP) => {
-            console.log('onItemSelect', addr);
-            updateTUI(addr.tui);
-          }}
-          {...address.props}
-        />
-      </View>
+
+      <View style={styles.spacer}></View>
       <Button disabled={!form.valid} onPress={goNext}>
         Next
       </Button>
-    </ScrollView>
+    </View>
   );
 };
 
-export default Step1;
+export default StepSubscriberInfo;

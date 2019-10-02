@@ -5,6 +5,7 @@ import { light as lightTheme, mapping } from '@eva-design/eva';
 
 import App from './App';
 
+console.log(lightTheme);
 const Root = () => (
   <ApplicationProvider mapping={mapping} theme={lightTheme}>
     <App />

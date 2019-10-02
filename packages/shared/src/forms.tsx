@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Field } from 'react-jeff';
 import { View } from 'react-native';
-import { Input, InputProps, List, ListItem } from 'react-native-ui-kitten';
+import {
+    Input, InputProps, List, ListItem, Text, ThemedComponentProps, withStyles
+} from 'react-native-ui-kitten';
 
 import { T_ADDR_LOOKUP } from './types';
 
@@ -20,14 +22,14 @@ export const JInput: React.FC<
   );
 };
 
-export const JAddress: React.FC<
-  Omit<InputProps, 'onChange' | 'value'> &
+export const JAddress_: React.FC<
+  ThemedComponentProps &
+    Omit<InputProps, 'onChange' | 'value'> &
     PropType<Field<string>, 'props'> & {
       onItemSelect: (addr: T_ADDR_LOOKUP) => void;
       data: T_ADDR_LOOKUP[];
     }
 > = ({ onChange, onItemSelect, data, ...props }) => {
-  const toggleMenu = () => {};
   const [selected, selectedSet] = useState(false);
   const onItemSelect_ = (addr: T_ADDR_LOOKUP) => {
     onItemSelect(addr);
@@ -36,7 +38,13 @@ export const JAddress: React.FC<
   };
 
   const renderItem = ({ item: addr }: { item: T_ADDR_LOOKUP }) => {
-    return <ListItem title={addr.label} onPress={() => onItemSelect_(addr)} />;
+    return (
+      <ListItem onPress={() => onItemSelect_(addr)}>
+        <Text category="c2" numberOfLines={1}>
+          {addr.label}
+        </Text>
+      </ListItem>
+    );
   };
   return (
     <View>
@@ -47,7 +55,24 @@ export const JAddress: React.FC<
           onChange(text); // Make sure all of your inputs call `props.onChange` with the new value.
         }}
       />
-      {!selected && <List data={data} renderItem={renderItem} />}
+      {!selected && data.length > 0 && (
+        <View
+          style={{
+            ...props.themedStyle.border,
+            borderWidth: 1,
+          }}
+        >
+          <List data={data} renderItem={renderItem} />
+        </View>
+      )}
     </View>
   );
 };
+
+export const JAddress = withStyles(JAddress_, theme => {
+  return {
+    border: {
+      borderColor: theme['color-primary-default'],
+    },
+  };
+});

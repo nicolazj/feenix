@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 
 import api from '../api';
 import { T_ADDR_PREQUAL, T_Order } from '../types';
@@ -41,14 +42,12 @@ const Form: React.FC = ({ children }) => {
   const [tui, tuiSet] = useState('');
   const [prequal, prequalSet] = useState<T_ADDR_PREQUAL>();
   const updateTUI = (tui: string) => {
-    console.log('updateTUI', tui);
     tuiSet(tui);
   };
-
+  console.log(form);
   useEffect(() => {
     const prequal = async () => {
       const data = await api.address.prequal(tui);
-      console.log(data);
       prequalSet(data);
     };
 
