@@ -46,6 +46,7 @@ const StepSubscriberInfo = () => {
     <View style={styles.section}>
       <View>
         <Text category="h4">Subscriber info</Text>
+  
         <View style={styles.formControl}>
           <JInput
             label="Subscriber name"

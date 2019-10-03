@@ -4,18 +4,18 @@ import api from '../api';
 import { T_ADDR_PREQUAL, T_Form } from '../types';
 
 const initForm: T_Form = {
-  subscriberName: '',
-  address: '',
-  customerReference: '',
-  termLocation: '',
-  siteAccessInformation: '',
-  siteContactName: '',
-  siteContactNumber: '',
-  siteContactEmail: '',
-  targetDate: '',
-  orderContactName: '',
-  orderContactNumber: '',
-  orderContactEmail: '',
+  subscriberName: 'subscriberName',
+  address: '10 tenter',
+  customerReference: 'customerReference',
+  termLocation: 'termLocation',
+  siteAccessInformation: 'siteAccessInformation',
+  siteContactName: 'siteContactName',
+  siteContactNumber: 'siteContactNumber',
+  siteContactEmail: 'siteContactEmail',
+  targetDate: '11/11/2020',
+  orderContactName: 'orderContactName',
+  orderContactNumber: 'orderContactNumber',
+  orderContactEmail: 'orderContactEmail',
   selectedProducts: [],
 };
 export const FormContext = createContext<{

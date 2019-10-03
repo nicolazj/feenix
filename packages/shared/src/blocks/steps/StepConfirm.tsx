@@ -11,24 +11,48 @@ import { JInput } from '../../forms';
 import styles from './styles';
 
 const StepConfirm = () => {
-  const { prequal } = useContext(FormContext);
-  const { cur, next, prev } = useContext(ScreensContext);
+  const { prequal, form } = useContext(FormContext);
+  const { prev } = useContext(ScreensContext);
   const [modalVisible, modalVisibleSet] = useState(false);
-  const orderContactName = useField({
-    defaultValue: '',
-  });
-  const orderContactNumber = useField({
-    defaultValue: '',
-  });
-  const orderContactEmail = useField({
-    defaultValue: '',
-  });
+
+  const selectedProductId = form.selectedProducts[0];
+  const selectedProduct = prequal!.availableComponentProducts.find(
+    p => p.product._id === selectedProductId
+  );
+
+  console.log('selectedProduct', selectedProduct);
+
+  const selectedProductVendorId =
+    selectedProduct && selectedProduct.product.vendor._id;
+  console.log('selectedProductVendorId', selectedProductVendorId);
+
+  const selectedTech = prequal!.technologies.find(
+    t => t.technology === selectedProduct!.product.technology
+  );
+  console.log('selectedTech', selectedTech);
+
+  const selectedTechVendor = selectedTech!.vendors.find(
+    v => v.vendor._id === selectedProductVendorId
+  );
+  console.log('selectedTechVendor', selectedTechVendor);
+
+  const {
+    serviceStatus: { code: serviceStatus },
+    installStatus: { code: installStatus },
+  } = selectedTechVendor!;
+  const connectEnabled =
+    serviceStatus === 'unknown' ||
+    (installStatus === 'installed' && serviceStatus === 'none');
+  const migrateEnabled =
+    serviceStatus === 'active' || serviceStatus === 'unknown';
+
+  console.log(connectEnabled, migrateEnabled);
 
   function onSubmit() {
     console.log('submit');
   }
-  const form = useForm({
-    fields: [orderContactName, orderContactNumber, orderContactEmail],
+  const jform = useForm({
+    fields: [],
     onSubmit: onSubmit,
   });
 
