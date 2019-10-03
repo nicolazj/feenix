@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
 import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
-import { JInput } from '../../forms';
+import { JDatePicker, JInput } from '../../forms';
 import styles from './styles';
 
 const StepOnsite = () => {
@@ -61,7 +61,7 @@ const StepOnsite = () => {
           <JInput label="Email" {...siteContactEmail.props} />
         </View>
         <View style={styles.formControl}>
-          <JInput label="Installation Date" {...targetDate.props} />
+          <JDatePicker label="Installation Date" {...targetDate.props} />
         </View>
       </View>
       <View style={styles.buttonBlock}>

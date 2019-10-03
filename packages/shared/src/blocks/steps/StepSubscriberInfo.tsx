@@ -12,7 +12,7 @@ import styles from './styles';
 
 const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI, updateForm, form,tui } = useContext(FormContext);
+  const { updateTUI, updateForm, form, tui } = useContext(FormContext);
 
   const subscriberName = useField({
     defaultValue: form.subscriberName,
@@ -48,10 +48,18 @@ const StepSubscriberInfo = () => {
       <View>
         <Text category="h4">Subscriber info</Text>
         <View style={styles.formControl}>
-          <JInput label="Subscriber name" caption="The full name of the subscriber" {...subscriberName.props} />
+          <JInput
+            label="Subscriber name"
+            caption="The full name of the subscriber"
+            {...subscriberName.props}
+          />
         </View>
         <View style={styles.formControl}>
-          <JInput label="Customer reference"  caption="SkyTV Customer Referencer"{...customerReference.props} />
+          <JInput
+            label="Customer reference"
+            caption="SkyTV Customer Referencer"
+            {...customerReference.props}
+          />
         </View>
         <View style={styles.formControl}>
           <JAddress
@@ -70,7 +78,7 @@ const StepSubscriberInfo = () => {
       </View>
 
       <View style={styles.spacer}></View>
-      <Button disabled={!jform.valid || tui.length===0} onPress={goNext}>
+      <Button disabled={!jform.valid || tui.length === 0} onPress={goNext}>
         Next
       </Button>
     </View>

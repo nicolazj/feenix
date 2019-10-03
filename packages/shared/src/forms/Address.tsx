@@ -1,29 +1,15 @@
+import { format, parse } from 'date-fns';
 import _debounce from 'lodash.debounce';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Field } from 'react-jeff';
 import { View } from 'react-native';
 import {
-    CheckBox, Input, InputProps, List, ListItem, Text, ThemedComponentProps,
-    withStyles
+    CheckBox, Datepicker, Input, InputProps, List, ListItem, Text,
+    ThemedComponentProps, withStyles
 } from 'react-native-ui-kitten';
 
-import api from './api';
-import { T_ADDR_LOOKUP } from './types';
-
-type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
-
-export const JInput: React.FC<
-  Omit<InputProps, 'onChange' | 'value'> & PropType<Field<string>, 'props'>
-> = ({ onChange, ...props }) => {
-  return (
-    <Input
-      {...props}
-      onChangeText={text => {
-        onChange(text);
-      }}
-    />
-  );
-};
+import api from '../api';
+import { PropType, T_ADDR_LOOKUP } from '../types';
 
 export const JAddress_: React.FC<
   ThemedComponentProps &
@@ -94,35 +80,3 @@ export const JAddress = withStyles(JAddress_, theme => {
     },
   };
 });
-
-export const JCheckbox: React.FC<
-  PropType<Field<string[]>, 'props'> & {
-    options: {
-      title: string;
-      value: string;
-    }[];
-  }
-> = ({ options, value, onChange }) => {
-  const onChecked = (v: string) => (checked: boolean) => {
-    if (checked) {
-      onChange([...value, v]);
-    } else {
-      onChange(value.filter(val => val !== v));
-    }
-  };
-
-  return (
-    <>
-      {options.map(option => {
-        return (
-          <CheckBox
-            key={option.value}
-            text={option.title}
-            checked={value.includes(option.value)}
-            onChange={onChecked(option.value)}
-          />
-        );
-      })}
-    </>
-  );
-};

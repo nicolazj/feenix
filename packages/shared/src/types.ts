@@ -1,3 +1,6 @@
+export type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
+
+
 export interface T_Form {
   subscriberName: string;
   customerReference: string;
