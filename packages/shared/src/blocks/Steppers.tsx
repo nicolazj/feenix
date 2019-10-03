@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { Screen, Screens } from '../components/Screens';
+import StepComplete from './steps/StepComplete';
 import StepConfirm from './steps/StepConfirm';
 import StepContact from './steps/StepContact';
 import StepOnsite from './steps/StepOnsite';
@@ -37,10 +38,14 @@ const Steppers = () => {
           <StepContact />
         </View>
       </Screen>
-
       <Screen>
         <View style={{ flex: 1 }}>
           <StepConfirm />
+        </View>
+      </Screen>
+      <Screen>
+        <View style={{ flex: 1 }}>
+          <StepComplete />
         </View>
       </Screen>
     </Screens>

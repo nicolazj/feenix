@@ -44,36 +44,28 @@ const StepSubscriberInfo = () => {
   };
   return (
     <View style={styles.section}>
+  
+
       <View>
         <Text category="h4">Subscriber info</Text>
-  
+
         <View style={styles.formControl}>
-          <JInput
-            label="Subscriber name"
-            caption="The full name of the subscriber"
-            {...subscriberName.props}
-          />
+          <JInput label="Subscriber name" caption="The full name of the subscriber" {...subscriberName.props} />
         </View>
         <View style={styles.formControl}>
-          <JInput
-            label="Customer reference"
-            caption="SkyTV Customer Referencer"
-            {...customerReference.props}
-          />
+          <JInput label="Customer reference" caption="SkyTV Customer Referencer" {...customerReference.props} />
         </View>
         <View style={styles.formControl}>
           <JAddress
             label="Address"
+            caption="Full address is required for order, please pick the suffix, level or
+            unit listed. If the wrong address is chosen your order will not
+            process correctly and will be canceled"
             onItemSelect={(addr: T_ADDR_LOOKUP) => {
               updateTUI(addr.tui);
             }}
             {...address.props}
           />
-          <Text category="c1">
-            Full address is required for order, please pick the suffix, level or
-            unit listed. If the wrong address is chosen your order will not
-            process correctly and will be canceled
-          </Text>
         </View>
       </View>
 

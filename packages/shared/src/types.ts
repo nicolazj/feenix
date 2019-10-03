@@ -16,6 +16,7 @@ export interface T_Form {
   orderContactEmail: string;
 
   selectedProducts: string[];
+  aim:string
 }
 
 export interface T_Order_Payload {

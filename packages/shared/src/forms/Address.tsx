@@ -1,11 +1,10 @@
-import { format, parse } from 'date-fns';
 import _debounce from 'lodash.debounce';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Field } from 'react-jeff';
 import { View } from 'react-native';
 import {
-    CheckBox, Datepicker, Input, InputProps, List, ListItem, Text,
-    ThemedComponentProps, withStyles
+    Input, InputProps, Interaction, List, ListItem, styled, Text,
+    ThemedComponentProps
 } from 'react-native-ui-kitten';
 
 import api from '../api';
@@ -17,11 +16,10 @@ export const JAddress_: React.FC<
     PropType<Field<string>, 'props'> & {
       onItemSelect: (addr: T_ADDR_LOOKUP) => void;
     }
-> = ({ onChange, onItemSelect, value, ...props }) => {
+> & { styledComponentName: string } = ({ onChange, onItemSelect, dispatch, value, caption, ...props }) => {
   const [selected, selectedSet] = useState(false);
   const [pristine, pristineSet] = useState(true);
   const [addressOptions, addressOptionsSet] = useState([] as T_ADDR_LOOKUP[]);
-
   const lookup = useCallback(
     _debounce(async (address: string) => {
       const data = await api.address.lookup(address);
@@ -30,7 +28,12 @@ export const JAddress_: React.FC<
     []
   );
   useEffect(() => {
-    if (value.length > 1 && !pristine) lookup(value);
+    dispatch && dispatch([Interaction.FOCUSED]);
+  }, []);
+  useEffect(() => {
+    if (value.length > 1 && !pristine) {
+      lookup(value);
+    }
   }, [value, pristine]);
 
   const onItemSelect_ = (addr: T_ADDR_LOOKUP) => {
@@ -62,21 +65,22 @@ export const JAddress_: React.FC<
       {!selected && addressOptions.length > 0 && (
         <View
           style={{
-            ...props.themedStyle.border,
+            borderColor: props.themedStyle.borderColor,
             borderWidth: 1,
           }}
         >
           <List data={addressOptions} renderItem={renderItem} />
         </View>
       )}
+
+      <Text category="c1" style={{ color: props.themedStyle.captionColor }}>
+        {caption}
+      </Text>
     </View>
   );
 };
 
-export const JAddress = withStyles(JAddress_, theme => {
-  return {
-    border: {
-      borderColor: theme['color-primary-default'],
-    },
-  };
-});
+JAddress_.styledComponentName = 'Input';
+
+export const JAddress = styled(JAddress_);
+

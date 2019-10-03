@@ -17,6 +17,7 @@ const initForm: T_Form = {
   orderContactNumber: 'orderContactNumber',
   orderContactEmail: 'orderContactEmail',
   selectedProducts: [],
+  aim:''
 };
 export const FormContext = createContext<{
   form: T_Form;

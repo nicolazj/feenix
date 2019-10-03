@@ -37,6 +37,10 @@ const StepProducts = () => {
     jform.submit();
     next();
   };
+  const goPrev = () => {
+    jform.submit();
+    prev();
+  };
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
@@ -56,13 +60,7 @@ const StepProducts = () => {
         </View>
       </View>
       <View style={styles.buttonBlock}>
-        <Button
-          onPress={() => {
-            prev();
-          }}
-        >
-          Back
-        </Button>
+        <Button onPress={goPrev}>Back</Button>
         <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>

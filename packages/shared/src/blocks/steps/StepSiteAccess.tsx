@@ -35,7 +35,10 @@ const StepSiteAccess = () => {
     jform.submit();
     next();
   };
-
+  const goPrev = () => {
+    jform.submit();
+    prev();
+  };
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
@@ -45,7 +48,6 @@ const StepSiteAccess = () => {
             caption="The location where you would like the Fibre box installed"
             {...termLocation.props}
           />
-       
         </View>
         <View style={styles.formControl}>
           <JInput
@@ -56,7 +58,7 @@ const StepSiteAccess = () => {
         </View>
       </View>
       <View style={styles.buttonBlock}>
-        <Button onPress={prev}>Back</Button>
+        <Button onPress={goPrev}>Back</Button>
         <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>

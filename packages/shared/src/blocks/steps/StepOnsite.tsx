@@ -45,44 +45,33 @@ const StepOnsite = () => {
     jform.submit();
     next();
   };
-
+  const goPrev = () => {
+    jform.submit();
+    prev();
+  };
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
         <Text category="h4">On-site Contact</Text>
         <View style={styles.formControl}>
-          <JInput
-            label="Name"
-            caption="You must enter a contact name"
-            {...siteContactName.props}
-          />
+          <JInput label="Name" caption="You must enter a contact name" {...siteContactName.props} />
         </View>
         <View style={styles.formControl}>
-          <JInput
-            label="Number"
-            caption="You must enter a contact phone number"
-            {...siteContactNumber.props}
-          />
+          <JInput label="Number" caption="You must enter a contact phone number" {...siteContactNumber.props} />
         </View>
         <View style={styles.formControl}>
-          <JInput
-            label="Email"
-            caption="Site contact email address (optional)"
-            {...siteContactEmail.props}
-          />
+          <JInput label="Email" caption="Site contact email address (optional)" {...siteContactEmail.props} />
         </View>
         <View style={styles.formControl}>
-          <JDatePicker label="Installation Date" caption="Select the installation date (DD/MM/YYYY)" {...targetDate.props} />
+          <JDatePicker
+            label="Installation Date"
+            caption="Select the installation date (DD/MM/YYYY)"
+            {...targetDate.props}
+          />
         </View>
       </View>
       <View style={styles.buttonBlock}>
-        <Button
-          onPress={() => {
-            prev();
-          }}
-        >
-          Back
-        </Button>
+        <Button onPress={goPrev}>Back</Button>
         <Button disabled={!jform.valid} onPress={goNext}>
           Next
         </Button>

@@ -10,6 +10,8 @@ const appIncludes = [
   'src',
   '../shared/src',
   '../../node_modules/react-native-ui-kitten',
+  '../../node_modules/@ui-kitten/eva-icons',
+  '../../node_modules/react-native-eva-icons'
 ].map(resolveApp)
 
 module.exports = function override(config, env) {
