@@ -46,13 +46,25 @@ const StepContact = () => {
       <View style={styles.spacer}>
         <Text category="h4">SkyTV Contact Person</Text>
         <View style={styles.formControl}>
-          <JInput label="Contact name" {...orderContactName.props} />
+          <JInput
+            label="Contact name"
+            caption="Contact Name is required"
+            {...orderContactName.props}
+          />
         </View>
         <View style={styles.formControl}>
-          <JInput label="Contact number" {...orderContactNumber.props} />
+          <JInput
+            label="Contact number"
+            caption="Contact Number is required"
+            {...orderContactNumber.props}
+          />
         </View>
         <View style={styles.formControl}>
-          <JInput label="Contact Email" {...orderContactEmail.props} />
+          <JInput
+            label="Contact Email"
+            caption="Contact Email is required"
+            {...orderContactEmail.props}
+          />
         </View>
       </View>
       <View style={styles.buttonBlock}>

@@ -42,20 +42,17 @@ const StepSiteAccess = () => {
         <View style={styles.formControl}>
           <JInput
             label="Circuit Termination Location"
+            caption="The location where you would like the Fibre box installed"
             {...termLocation.props}
           />
-          <Text category="c1">
-            The location where you would like the Fibre box installed
-          </Text>
+       
         </View>
         <View style={styles.formControl}>
           <JInput
             label="Site Access Infomation"
+            caption="For example: There is a dog on site please ring first"
             {...siteAccessInformation.props}
           />
-          <Text category="c1">
-            For example: There is a dog on site please ring first
-          </Text>
         </View>
       </View>
       <View style={styles.buttonBlock}>
