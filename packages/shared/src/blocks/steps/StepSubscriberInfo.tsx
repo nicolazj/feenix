@@ -44,7 +44,7 @@ const StepSubscriberInfo = () => {
     next();
   };
   return (
-    <KeyboardView>
+    <KeyboardView style={{flex:1}}>
       <View style={styles.section}>
         <Text category="h4">Subscriber info</Text>
 

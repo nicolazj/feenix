@@ -14,7 +14,7 @@ import Test from './steps/Test';
 const Steppers = () => {
   return (
     <Screens style={{ flex: 1, overflow: 'hidden' }}>
-        <ScrollView style={{ flex: 1 }} >
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={{flexGrow:1}}>
           <StepSubscriberInfo />
         </ScrollView>
         <View style={{ flex: 1 }}>
