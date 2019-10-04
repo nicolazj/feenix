@@ -10,7 +10,7 @@ const StepComplete = () => {
       <View style={styles.spacer}>
         <Text category="h4">Successfully placed order</Text>
         <View style={{ paddingVertical: 20 }}>
-          <Text category="p1">Congratulations. Your order has been submitted successfull.</Text>
+          <Text category="p1">Congratulations. Your order has been submitted successfully.</Text>
         </View>
       </View>
     </View>
