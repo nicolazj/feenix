@@ -6,7 +6,7 @@ import useDimensions from '../hooks/useDimensions';
 
 const AnimatedView = (animated(View) as unknown) as typeof View;
 
-export const Screen: React.FC<{ style?: any }> = (props: any) => {
+const Screen: React.FC<{ style?: any }> = (props: any) => {
   return (
     <AnimatedView
       style={{
@@ -34,11 +34,7 @@ export const ScreensContext = React.createContext<{
   next: () => void;
 }>({ cur: 0, next: () => {}, prev: () => {} });
 
-export const Screens: React.FC<{ current?: number; style: any }> = ({
-  children,
-  current = 0,
-  ...props
-}) => {
+export const Screens: React.FC<{ current?: number; style: any }> = ({ children, current = 0, ...props }) => {
   const { screen } = useDimensions();
   const [cur, curSet] = useState(current);
   const [forward, forwardSet] = useState(true);
@@ -73,10 +69,12 @@ export const Screens: React.FC<{ current?: number; style: any }> = ({
     <ScreensContext.Provider value={{ cur, prev, next }}>
       <View {...props}>
         {transitions.map(({ item, props, key }: any) => {
-          const child = React.Children.toArray(children)[
-            item
-          ] as React.ReactElement<any>;
-          return React.cloneElement(child, { key, style: props });
+          const child = React.Children.toArray(children)[item];
+          return (
+            <Screen key={key} style={props}>
+              {child}
+            </Screen>
+          );
         })}
       </View>
     </ScreensContext.Provider>

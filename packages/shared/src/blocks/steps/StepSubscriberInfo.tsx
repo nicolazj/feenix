@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { View } from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
 import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JAddress, JInput } from '../../forms';
+import KeyboardView from '../../platform/KeyboardView';
 import { T_ADDR_LOOKUP } from '../../types';
 import styles from './styles';
 
@@ -43,10 +44,8 @@ const StepSubscriberInfo = () => {
     next();
   };
   return (
-    <View style={styles.section}>
-  
-
-      <View>
+    <KeyboardView>
+      <View style={styles.section}>
         <Text category="h4">Subscriber info</Text>
 
         <View style={styles.formControl}>
@@ -55,6 +54,7 @@ const StepSubscriberInfo = () => {
         <View style={styles.formControl}>
           <JInput label="Customer reference" caption="SkyTV Customer Referencer" {...customerReference.props} />
         </View>
+
         <View style={styles.formControl}>
           <JAddress
             label="Address"
@@ -67,13 +67,13 @@ const StepSubscriberInfo = () => {
             {...address.props}
           />
         </View>
-      </View>
 
-      <View style={styles.spacer}></View>
-      <Button disabled={!jform.valid || tui.length === 0} onPress={goNext}>
-        Next
-      </Button>
-    </View>
+        <View style={styles.spacer}></View>
+        <Button disabled={!jform.valid || tui.length === 0} onPress={goNext}>
+          Next
+        </Button>
+      </View>
+    </KeyboardView>
   );
 };
 
