@@ -17,7 +17,7 @@ const initForm: T_Form = {
   orderContactNumber: 'orderContactNumber',
   orderContactEmail: 'orderContactEmail',
   tailProductId: '',
-  tailVariantId:'',
+  tailVariantId: '',
   aim: '',
   existingServiceId: '',
   existingServiceProvider: '',
@@ -26,6 +26,7 @@ const initForm: T_Form = {
 interface Store {
   form: T_Form;
   prequal?: T_ADDR_PREQUAL;
+  prequaling: boolean;
   tui: string;
   updateForm: (form: Partial<T_Form>) => void;
   updateTUI: (tui: string) => void;
@@ -33,18 +34,19 @@ interface Store {
 const orderStore = create<Store>((set, get) => ({
   form: initForm,
   tui: '',
+  prequaling: false,
   updateForm: (newForm: Partial<T_Form>) => {
-    const form = { ...get().form, ...newForm } ;
-    console.log(form)
+    const form = { ...get().form, ...newForm };
+    console.log(form);
     set({ form });
   },
   updateTUI: async (tui: string) => {
-    set({ tui });
+    set({ tui, prequaling: true });
     if (tui.length > 0) {
       const prequal = await api.address.prequal(tui);
-      set({ prequal });
+      set({ prequal, prequaling: false });
     }
   },
 }));
 export default orderStore;
-export const  useOrderStore = orderStore[0]
+export const useOrderStore = orderStore[0];

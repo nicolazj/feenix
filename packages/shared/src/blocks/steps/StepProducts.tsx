@@ -5,6 +5,7 @@ import { Button, Text } from 'react-native-ui-kitten';
 
 import { ScreensContext } from '../../components/Screens';
 import { JSelect } from '../../forms/Select';
+import usePrevious from '../../hooks/usePrevious';
 import { useOrderStore } from '../../store/order';
 import { T_ADDR_PREQUAL } from '../../types';
 import styles from './styles';
@@ -27,8 +28,9 @@ const StepProducts = () => {
     required: true,
   });
 
+  const previousProduct = usePrevious(tailProductId.value);
   useEffect(() => {
-    tailVariantId.props.onChange('');
+    previousProduct && tailVariantId.props.onChange('');
   }, [tailProductId.value]);
 
   function onSubmit() {

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
-import { KeyboardAvoidingView, Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
 import { ScreensContext } from '../../components/Screens';
@@ -12,12 +12,7 @@ import styles from './styles';
 
 const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI, updateForm, form, tui } = useOrderStore(({ updateTUI, updateForm, form, tui }) => ({
-    updateTUI,
-    updateForm,
-    form,
-    tui,
-  }));
+  const { updateTUI, updateForm, form, tui, prequaling, prequal } = useOrderStore();
 
   const subscriberName = useField({
     defaultValue: form.subscriberName,
@@ -63,9 +58,13 @@ const StepSubscriberInfo = () => {
         <View style={styles.formControl}>
           <JAddress
             label="Address"
-            caption="Full address is required for order, please pick the suffix, level or
-            unit listed. If the wrong address is chosen your order will not
-            process correctly and will be canceled"
+            caption={
+              prequaling
+                ? 'Pre-qualifying...'
+                : prequal
+                ? 'Passed Pre-qualification'
+                : 'Full address is required for order, please pick the suffix, level or unit listed. If the wrong address is chosen your order will not process correctly and will be canceled'
+            }
             onItemSelect={(addr: T_ADDR_LOOKUP) => {
               updateTUI(addr.tui);
             }}
@@ -74,7 +73,7 @@ const StepSubscriberInfo = () => {
         </View>
 
         <View style={styles.spacer}></View>
-        <Button disabled={!jform.valid || tui.length === 0} onPress={goNext}>
+        <Button disabled={!jform.valid || tui.length === 0 || !prequal} onPress={goNext}>
           Next
         </Button>
       </View>
