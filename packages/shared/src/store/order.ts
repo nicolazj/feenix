@@ -16,7 +16,8 @@ const initForm: T_Form = {
   orderContactName: 'orderContactName',
   orderContactNumber: 'orderContactNumber',
   orderContactEmail: 'orderContactEmail',
-  selectedProduct: '',
+  tailProductId: '',
+  tailVariantId:'',
   aim: '',
   existingServiceId: '',
   existingServiceProvider: '',
@@ -32,8 +33,10 @@ interface Store {
 const orderStore = create<Store>((set, get) => ({
   form: initForm,
   tui: '',
-  updateForm: (form: Partial<T_Form>) => {
-    set({ form: { ...get().form, ...form } });
+  updateForm: (newForm: Partial<T_Form>) => {
+    const form = { ...get().form, ...newForm } ;
+    console.log(form)
+    set({ form });
   },
   updateTUI: async (tui: string) => {
     set({ tui });

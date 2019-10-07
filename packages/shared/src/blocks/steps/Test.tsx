@@ -1,58 +1,44 @@
-import React, { Component } from 'react';
-import {
-    Button, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet,
-    Text, TextInput, TouchableWithoutFeedback, View
-} from 'react-native';
+import React, { Component, useState } from 'react';
+import { View } from 'react-native';
+import { Button, Layout, Modal, Text } from 'react-native-ui-kitten';
 
-class Test extends Component {
-  public render() {
-    return (
-      <KeyboardAvoidingView behavior={'padding'} style={{ flex: 1 }}>
-        <SafeAreaView style={styles.container}>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.inner}>
-              <Text style={styles.header}>Header</Text>
-              <TextInput placeholder="Username" style={styles.input} />
-              <TextInput placeholder="Password" style={styles.input} />
-              <TextInput placeholder="Confrim Password" style={styles.input} />
-              <TextInput placeholder="Confrim Password" style={styles.input} />
-              <TextInput placeholder="Confrim Password" style={styles.input} />
-              <View style={styles.btnContainer}>
-                <Button title="Submit" onPress={() => null} />
-              </View>
+import styles from './styles';
 
-              <View style={{ flex: 1 }} />
-            </View>
-          </TouchableWithoutFeedback>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    );
-  }
-}
+const Test = () => {
+  const [modalVisible, modalVisibleSet] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  inner: {
-    padding: 24,
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  header: {
-    fontSize: 36,
-    marginBottom: 48,
-  },
-  input: {
-    height: 40,
-    borderColor: '#000000',
-    borderBottomWidth: 1,
-    marginBottom: 36,
-  },
-  btnContainer: {
-    backgroundColor: 'white',
-    marginTop: 12,
-  },
-});
+  return (
+    <View style={styles.section}>
+     <View style={styles.spacer}>
+        <Text category="h4">Confirm order</Text>
+        <View style={styles.formControl}>
+          
+       
+        </View>
+      </View>
+
+      <View style={styles.buttonBlock}>
+       
+        <Button onPress={()=>modalVisibleSet(true)}>
+          Place order
+        </Button>
+      </View>
+      <Modal
+        visible={modalVisible}
+        allowBackdrop={true}
+        onBackdropPress={() => modalVisibleSet(false)}
+        backdropStyle={{ backgroundColor: 'black', opacity: 0.5 }}
+      >
+        <Layout style={{ flex: 1, width: 300, padding: 20 }}>
+          <Text category="h4"> Confirm place order</Text>
+          <Text style={{ padding: 20 }}>
+            Please confirm you wish to place this order. If you do continue to the next stage you are instructing us to
+            place orders with our upstream providers, which in most cases will incur costs to your account.
+          </Text>
+        </Layout>
+      </Modal>
+    </View>
+  );
+};
 
 export default Test;

@@ -5,17 +5,17 @@ import { Button, Layout, Modal, Text } from 'react-native-ui-kitten';
 
 import { LoadingIcon } from '../../components/LoadingIcon';
 import { ScreensContext } from '../../components/Screens';
-import { JInput, JRadio } from '../../forms';
+import { JInput, JRadio, JSelect } from '../../forms';
 import { useOrderStore } from '../../store/order';
 import { T_ADDR_PREQUAL } from '../../types';
 import styles from './styles';
 
 const getProductInfo = (prequal: T_ADDR_PREQUAL | undefined, selectedProductId: string) => {
   if (prequal) {
-    const selectedProduct = prequal.availableComponentProducts.find(p => p.product._id === selectedProductId);
+    const selectedProduct = prequal.availableQuickOrderProducts.find(p => p.tailProduct._id === selectedProductId);
     if (selectedProduct) {
-      const selectedProductVendorId = selectedProduct.product.vendor._id;
-      const selectedTech = prequal.technologies.find(t => t.technology === selectedProduct.product.technology);
+      const selectedProductVendorId = selectedProduct.tailProduct.vendor._id;
+      const selectedTech = prequal.technologies.find(t => t.technology === selectedProduct.tailProduct.technology);
       if (selectedTech) {
         const selectedTechVendor = selectedTech!.vendors.find(v => v.vendor._id === selectedProductVendorId);
         if (selectedTechVendor) {
@@ -41,8 +41,10 @@ const getProductInfo = (prequal: T_ADDR_PREQUAL | undefined, selectedProductId: 
 };
 const StepConfirm = () => {
   const { prev, next } = useContext(ScreensContext);
-  const { prequal,updateForm, form} = useOrderStore(({ prequal,updateForm, form }) => ({
-    prequal,updateForm, form
+  const { prequal, updateForm, form } = useOrderStore(({ prequal, updateForm, form }) => ({
+    prequal,
+    updateForm,
+    form,
   }));
   const [modalVisible, modalVisibleSet] = useState(false);
   const [submitting, submittingSet] = useState(false);
@@ -60,7 +62,7 @@ const StepConfirm = () => {
     required: true,
   });
 
-  const info = getProductInfo(prequal, form.selectedProduct);
+  const info = getProductInfo(prequal, form.tailProductId);
 
   const { connectEnabled, migrateEnabled, existingServices } = info!;
 
@@ -87,8 +89,9 @@ const StepConfirm = () => {
   const confirmPlaceOrder = () => {
     submittingSet(true);
     const product = prequal!.availableQuickOrderProducts.find(
-      product => product.tailProduct._id === form.selectedProduct
+      product => product.tailProduct._id === form.tailProductId
     );
+    console.log(product);
     const payload = {
       addressId: prequal!.address._id,
       aim: form.aim,
@@ -106,8 +109,8 @@ const StepConfirm = () => {
       siteContactNumber: form.siteContactNumber,
       soldProductId: product!.soldProduct._id,
       subscriberName: form.subscriberName,
-      tailProductId: product!.tailProduct._id,
-      tailVariantId: null,
+      tailProductId: form.tailProductId,
+      tailVariantId: form.tailVariantId,
       targetDate: form.targetDate,
     };
 
@@ -144,7 +147,7 @@ const StepConfirm = () => {
           <JRadio label="Connection type" options={connectOptions} {...aim.props} />
 
           {aim.value === 'Migrate' && (
-            <JRadio
+            <JSelect
               label="Existing Service"
               options={existingServices.map(s => ({
                 title: `${s.vendor.name}-${s.id}`,
@@ -165,7 +168,12 @@ const StepConfirm = () => {
           Place order
         </Button>
       </View>
-      <Modal visible={modalVisible} allowBackdrop={true} backdropStyle={{ backgroundColor: 'black', opacity: 0.5 }}>
+      <Modal
+        visible={modalVisible}
+        allowBackdrop={true}
+        onBackdropPress={() => modalVisibleSet(false)}
+        backdropStyle={{ backgroundColor: 'black', opacity: 0.5 }}
+      >
         <Layout style={{ flex: 1, width: 300, padding: 20 }}>
           <Text category="h4"> Confirm place order</Text>
           <Text style={{ padding: 20 }}>

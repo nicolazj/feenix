@@ -4,15 +4,12 @@ import { Field } from 'react-jeff';
 import { View } from 'react-native';
 import { Radio, Text } from 'react-native-ui-kitten';
 
-import { PropType } from '../types';
+import { PropType, T_OPTION } from '../types';
 
 export const JRadio: React.FC<
   PropType<Field<string>, 'props'> & {
     label: string;
-    options: {
-      title: string;
-      value: string;
-    }[];
+    options: T_OPTION[];
   }
 > = ({ options, value, onChange, label }) => {
   return (

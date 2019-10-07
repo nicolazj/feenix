@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
 import { ScreensContext } from '../../components/Screens';
-import { JRadio } from '../../forms';
+import { JSelect } from '../../forms/Select';
 import { useOrderStore } from '../../store/order';
+import { T_ADDR_PREQUAL } from '../../types';
 import styles from './styles';
 
 const StepProducts = () => {
@@ -17,25 +18,27 @@ const StepProducts = () => {
 
   const { next, prev } = useContext(ScreensContext);
 
-  const selectedProduct = useField({
-    defaultValue: form.selectedProduct,
+  const tailProductId = useField({
+    defaultValue: form.tailProductId,
     required: true,
-    validations: [
-      value => {
-        let errs = [];
-        if (value.length === 0) errs.push('has at least one prodcut');
-        return errs;
-      },
-    ],
   });
+  const tailVariantId = useField({
+    defaultValue: form.tailVariantId,
+    required: true,
+  });
+
+  useEffect(() => {
+    tailVariantId.props.onChange('');
+  }, [tailProductId.value]);
 
   function onSubmit() {
     updateForm({
-      selectedProduct: selectedProduct.value,
+      tailProductId: tailProductId.value,
+      tailVariantId: tailVariantId.value,
     });
   }
   const jform = useForm({
-    fields: [selectedProduct],
+    fields: [tailProductId, tailVariantId],
     onSubmit: onSubmit,
   });
   const goNext = () => {
@@ -46,23 +49,42 @@ const StepProducts = () => {
     jform.submit();
     prev();
   };
+
+  const getProductOptions = (prequal: T_ADDR_PREQUAL) => {
+    return prequal.availableQuickOrderProducts.map(product => ({
+      title: product.tailProduct.name,
+      value: product.tailProduct._id,
+    }));
+  };
+
+  const getProductVariants = (prequal: T_ADDR_PREQUAL, tailProductId: string) => {
+    const product = prequal.availableQuickOrderProducts.find(product => product.tailProduct._id === tailProductId);
+    if (product) {
+      return product.tailVariants.map(va => ({ title: va.name, value: va._id }));
+    }
+    return [];
+  };
+
   return (
     <View style={styles.section}>
       <View style={styles.spacer}>
         <Text category="h4">Available products</Text>
-        <View style={styles.formControl}>
-          {prequal && prequal.availableComponentProducts.length > 0 ? (
-            <JRadio
-              label="Products:"
-              options={prequal.availableComponentProducts.map(product => ({
-                title: product.product.name,
-                value: product.product._id,
-              }))}
-              {...selectedProduct.props}
-            />
-          ) : null}
-        </View>
+        {prequal ? (
+          <>
+            <View style={styles.formControl}>
+              <JSelect label="Products:" options={getProductOptions(prequal)} {...tailProductId.props} />
+            </View>
+            <View style={styles.formControl}>
+              <JSelect
+                label="Products variant:"
+                options={getProductVariants(prequal, tailProductId.value)}
+                {...tailVariantId.props}
+              />
+            </View>
+          </>
+        ) : null}
       </View>
+
       <View style={styles.buttonBlock}>
         <Button onPress={goPrev}>Back</Button>
         <Button disabled={!jform.valid} onPress={goNext}>

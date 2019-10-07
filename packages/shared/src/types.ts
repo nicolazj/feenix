@@ -1,6 +1,10 @@
 export type PropType<TObj, TProp extends keyof TObj> = TObj[TProp];
 
 
+export  interface T_OPTION {
+    title: string;
+    value: string;
+}
 export interface T_Form {
   subscriberName: string;
   customerReference: string;
@@ -15,10 +19,12 @@ export interface T_Form {
   orderContactNumber: string;
   orderContactEmail: string;
 
-  selectedProduct: string;
-  aim:string;
-  existingServiceId:string,
-  existingServiceProvider:string
+  // selectedProduct: string;
+  aim: string;
+  existingServiceId: string;
+  existingServiceProvider: string;
+  tailProductId: string;
+  tailVariantId: string;
 }
 
 export interface T_Order_Payload {

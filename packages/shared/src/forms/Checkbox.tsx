@@ -3,14 +3,11 @@ import React from 'react';
 import { Field } from 'react-jeff';
 import { CheckBox } from 'react-native-ui-kitten';
 
-import { PropType } from '../types';
+import { PropType, T_OPTION } from '../types';
 
 export const JCheckbox: React.FC<
   PropType<Field<string[]>, 'props'> & {
-    options: {
-      title: string;
-      value: string;
-    }[];
+    options: T_OPTION[];
   }
 > = ({ options, value, onChange }) => {
   const onChecked = (v: string) => (checked: boolean) => {

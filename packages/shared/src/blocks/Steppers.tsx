@@ -9,7 +9,8 @@ import StepOnsite from './steps/StepOnsite';
 import StepProducts from './steps/StepProducts';
 import StepSiteAccess from './steps/StepSiteAccess';
 import StepSubscriberInfo from './steps/StepSubscriberInfo';
-import Test from './steps/Test';
+
+// import Test from './steps/Test';
 
 const Steppers = () => {
   return (
@@ -29,9 +30,9 @@ const Steppers = () => {
       <View style={{ flex: 1 }}>
         <StepContact />
       </View>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+      <View style={{ flex: 1 }} >
         <StepConfirm />
-      </ScrollView>
+      </View>
       <View style={{ flex: 1 }}>
         <StepComplete />
       </View>
