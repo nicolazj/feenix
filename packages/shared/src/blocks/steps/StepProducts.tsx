@@ -3,13 +3,18 @@ import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
-import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JRadio } from '../../forms';
+import { useOrderStore } from '../../store/order';
 import styles from './styles';
 
 const StepProducts = () => {
-  const { prequal, form, updateForm } = useContext(FormContext);
+  const { prequal, updateForm, form } = useOrderStore(({ prequal, updateForm, form }) => ({
+    prequal,
+    updateForm,
+    form,
+  }));
+
   const { next, prev } = useContext(ScreensContext);
 
   const selectedProduct = useField({
@@ -55,9 +60,7 @@ const StepProducts = () => {
               }))}
               {...selectedProduct.props}
             />
-          ) : (
-            <Text status="warning">Sorry, no products available</Text>
-          )}
+          ) : null}
         </View>
       </View>
       <View style={styles.buttonBlock}>

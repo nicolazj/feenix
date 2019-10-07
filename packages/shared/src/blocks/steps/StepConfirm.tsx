@@ -3,10 +3,10 @@ import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
 import { Button, Layout, Modal, Text } from 'react-native-ui-kitten';
 
-import { FormContext } from '../../components/Form';
 import { LoadingIcon } from '../../components/LoadingIcon';
 import { ScreensContext } from '../../components/Screens';
 import { JInput, JRadio } from '../../forms';
+import { useOrderStore } from '../../store/order';
 import { T_ADDR_PREQUAL } from '../../types';
 import styles from './styles';
 
@@ -40,8 +40,10 @@ const getProductInfo = (prequal: T_ADDR_PREQUAL | undefined, selectedProductId: 
   }
 };
 const StepConfirm = () => {
-  const { prequal, form, updateForm } = useContext(FormContext);
   const { prev, next } = useContext(ScreensContext);
+  const { prequal,updateForm, form} = useOrderStore(({ prequal,updateForm, form }) => ({
+    prequal,updateForm, form
+  }));
   const [modalVisible, modalVisibleSet] = useState(false);
   const [submitting, submittingSet] = useState(false);
 
@@ -145,14 +147,14 @@ const StepConfirm = () => {
             <JRadio
               label="Existing Service"
               options={existingServices.map(s => ({
-                title: `${s.name}-${s.id}`,
+                title: `${s.vendor.name}-${s.id}`,
                 value: s.id,
               }))}
               {...existingServiceId.props}
             />
           )}
           {aim.value === 'Migrate' && (
-            <JInput label="Existing Service" caption="Required" {...existingServiceProvider.props} />
+            <JInput label="Existing Service provider" caption="Required" {...existingServiceProvider.props} />
           )}
         </View>
       </View>

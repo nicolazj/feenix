@@ -5,7 +5,6 @@ import { Layout } from 'react-native-ui-kitten';
 
 import { AppHeader } from './AppHeader';
 import Steppers from './blocks/Steppers';
-import Form from './components/Form';
 
 const App = () => {
   return (
@@ -13,9 +12,7 @@ const App = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{ flex: 1 }}>
         <AppHeader />
-        <Form>
           <Steppers />
-        </Form>
       </SafeAreaView>
     </Layout>
   );

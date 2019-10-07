@@ -3,14 +3,16 @@ import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
-import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JInput } from '../../forms';
+import { useOrderStore } from '../../store/order';
 import styles from './styles';
 
 const StepContact = () => {
   const { next, prev } = useContext(ScreensContext);
-  const { form, updateForm } = useContext(FormContext);
+  const { updateForm, form} = useOrderStore(({ updateForm, form }) => ({
+    updateForm, form
+   }));
   const orderContactName = useField({
     defaultValue: form.orderContactName,
     required: true,

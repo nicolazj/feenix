@@ -3,16 +3,21 @@ import { useField, useForm } from 'react-jeff';
 import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { Button, Text } from 'react-native-ui-kitten';
 
-import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
 import { JAddress, JInput } from '../../forms';
 import KeyboardView from '../../platform/KeyboardView';
+import { useOrderStore } from '../../store/order';
 import { T_ADDR_LOOKUP } from '../../types';
 import styles from './styles';
 
 const StepSubscriberInfo = () => {
   const { next } = useContext(ScreensContext);
-  const { updateTUI, updateForm, form, tui } = useContext(FormContext);
+  const { updateTUI, updateForm, form, tui } = useOrderStore(({ updateTUI, updateForm, form, tui }) => ({
+    updateTUI,
+    updateForm,
+    form,
+    tui,
+  }));
 
   const subscriberName = useField({
     defaultValue: form.subscriberName,
@@ -44,7 +49,7 @@ const StepSubscriberInfo = () => {
     next();
   };
   return (
-    <KeyboardView style={{flex:1}}>
+    <KeyboardView style={{ flex: 1 }}>
       <View style={styles.section}>
         <Text category="h4">Subscriber info</Text>
 

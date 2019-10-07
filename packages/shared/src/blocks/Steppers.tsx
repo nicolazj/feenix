@@ -14,27 +14,27 @@ import Test from './steps/Test';
 const Steppers = () => {
   return (
     <Screens style={{ flex: 1, overflow: 'hidden' }}>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={{flexGrow:1}}>
-          <StepSubscriberInfo />
-        </ScrollView>
-        <View style={{ flex: 1 }}>
-          <StepProducts />
-        </View>
-        <View style={{ flex: 1 }}>
-          <StepSiteAccess />
-        </View>
-        <View style={{ flex: 1 }}>
-          <StepOnsite />
-        </View>
-        <View style={{ flex: 1 }}>
-          <StepContact />
-        </View>
-        <View style={{ flex: 1 }}>
-          <StepConfirm />
-        </View>
-        <View style={{ flex: 1 }}>
-          <StepComplete />
-        </View>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <StepSubscriberInfo />
+      </ScrollView>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <StepProducts />
+      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <StepSiteAccess />
+      </View>
+      <View style={{ flex: 1 }}>
+        <StepOnsite />
+      </View>
+      <View style={{ flex: 1 }}>
+        <StepContact />
+      </View>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <StepConfirm />
+      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <StepComplete />
+      </View>
     </Screens>
   );
 };
