@@ -5,15 +5,15 @@ import { Button, Text } from 'react-native-ui-kitten';
 
 import { FormContext } from '../../components/Form';
 import { ScreensContext } from '../../components/Screens';
-import { JCheckbox } from '../../forms';
+import { JRadio } from '../../forms';
 import styles from './styles';
 
 const StepProducts = () => {
   const { prequal, form, updateForm } = useContext(FormContext);
   const { next, prev } = useContext(ScreensContext);
 
-  const selectedProducts = useField<string[]>({
-    defaultValue: form.selectedProducts,
+  const selectedProduct = useField({
+    defaultValue: form.selectedProduct,
     required: true,
     validations: [
       value => {
@@ -26,11 +26,11 @@ const StepProducts = () => {
 
   function onSubmit() {
     updateForm({
-      selectedProducts: selectedProducts.value,
+      selectedProduct: selectedProduct.value,
     });
   }
   const jform = useForm({
-    fields: [selectedProducts],
+    fields: [selectedProduct],
     onSubmit: onSubmit,
   });
   const goNext = () => {
@@ -47,12 +47,13 @@ const StepProducts = () => {
         <Text category="h4">Available products</Text>
         <View style={styles.formControl}>
           {prequal && prequal.availableComponentProducts.length > 0 ? (
-            <JCheckbox
+            <JRadio
+              label="Products:"
               options={prequal.availableComponentProducts.map(product => ({
                 title: product.product.name,
                 value: product.product._id,
               }))}
-              {...selectedProducts.props}
+              {...selectedProduct.props}
             />
           ) : (
             <Text status="warning">Sorry, no products available</Text>

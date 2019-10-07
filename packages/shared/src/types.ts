@@ -5,7 +5,7 @@ export interface T_Form {
   subscriberName: string;
   customerReference: string;
   address: string;
-  termLocation: string;
+  demarc: string;
   siteAccessInformation: string;
   siteContactName: string;
   siteContactNumber: string;
@@ -15,8 +15,10 @@ export interface T_Form {
   orderContactNumber: string;
   orderContactEmail: string;
 
-  selectedProducts: string[];
-  aim:string
+  selectedProduct: string;
+  aim:string;
+  existingServiceId:string,
+  existingServiceProvider:string
 }
 
 export interface T_Order_Payload {

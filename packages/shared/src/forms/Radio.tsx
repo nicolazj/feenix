@@ -15,7 +15,6 @@ export const JRadio: React.FC<
     }[];
   }
 > = ({ options, value, onChange, label }) => {
-  console.log(options, value);
   return (
     <>
       <Text>{label}</Text>

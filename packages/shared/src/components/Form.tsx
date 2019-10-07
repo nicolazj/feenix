@@ -7,7 +7,7 @@ const initForm: T_Form = {
   subscriberName: 'subscriberName',
   address: '10 tenter',
   customerReference: 'customerReference',
-  termLocation: 'termLocation',
+  demarc: 'demarc',
   siteAccessInformation: 'siteAccessInformation',
   siteContactName: 'siteContactName',
   siteContactNumber: 'siteContactNumber',
@@ -16,8 +16,10 @@ const initForm: T_Form = {
   orderContactName: 'orderContactName',
   orderContactNumber: 'orderContactNumber',
   orderContactEmail: 'orderContactEmail',
-  selectedProducts: [],
-  aim:''
+  selectedProduct: '',
+  aim:'',
+  existingServiceId:'',
+  existingServiceProvider:''
 };
 export const FormContext = createContext<{
   form: T_Form;
@@ -38,7 +40,6 @@ const Form: React.FC = ({ children }) => {
   const updateTUI = (tui: string) => {
     tuiSet(tui);
   };
-  console.log(form);
   useEffect(() => {
     const prequal = async () => {
       const data = await api.address.prequal(tui);

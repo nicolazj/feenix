@@ -1,0 +1,1258 @@
+{
+  "address": { "_id": "5d01939f160b267a8ad11e37" },
+  "technologies": [
+    {
+      "availability": { "code": "available" },
+      "installStatus": { "code": "installed" },
+      "serviceStatus": { "code": "active" },
+      "vendors": [
+        {
+          "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus", "number": "0004" },
+          "technology": "Fibre",
+          "availability": { "code": "available" },
+          "installStatus": { "code": "installed" },
+          "serviceStatus": { "code": "active" },
+          "isConsentRequired": false,
+          "isStandardInstall": true,
+          "attributes": []
+        }
+      ],
+      "technology": "Fibre"
+    },
+    {
+      "availability": { "code": "unknown" },
+      "installStatus": { "code": "installed" },
+      "serviceStatus": { "code": "active" },
+      "vendors": [
+        {
+          "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus", "number": "0004" },
+          "technology": "Copper",
+          "availability": {},
+          "installStatus": { "code": "installed" },
+          "serviceStatus": { "code": "active" },
+          "attributes": []
+        }
+      ],
+      "technology": "Copper"
+    },
+    {
+      "availability": { "code": "unknown" },
+      "installStatus": { "code": "unknown" },
+      "serviceStatus": { "code": "unknown" },
+      "vendors": [],
+      "technology": "Wireless"
+    },
+    {
+      "availability": { "code": "unknown" },
+      "installStatus": { "code": "unknown" },
+      "serviceStatus": { "code": "unknown" },
+      "vendors": [],
+      "technology": "Cable"
+    }
+  ],
+  "availableQuickOrderProducts": [
+    {
+      "soldProduct": {
+        "_id": "5d01d39af4dd3a48e74f4cfc",
+        "name": "Sky ADSL",
+        "productCode": "",
+        "productClass": "subscriber plan",
+        "vendor": { "_id": "5d002922b15e433ea0de9a7d", "name": "Sky TV" },
+        "isSold": true
+      },
+      "tailProduct": {
+        "_id": "5d01d358f4dd3a48e74f49b7",
+        "name": "Copper Broadband Service",
+        "productCode": "CHR-ACC-CPR-{speed}",
+        "productClass": "tail",
+        "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+        "isSold": false,
+        "technology": "Copper"
+      },
+      "tailVariants": [{ "_id": "5a2de45690d53906365c76a6", "name": "ADSL - 0kbps w/out POTS", "label": "EUBA_0" }]
+    }
+  ],
+  "availableComponentProducts": [
+    {
+      "product": {
+        "_id": "5d01d358f4dd3a48e74f49b7",
+        "name": "Copper Broadband Service",
+        "productCode": "CHR-ACC-CPR-{speed}",
+        "productClass": "tail",
+        "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+        "isSold": false,
+        "technology": "Copper"
+      },
+      "variants": [
+        { "_id": "5a2de45690d53906365c76a6", "label": "EUBA_0", "name": "ADSL - 0kbps w/out POTS" },
+        { "_id": "5a2de49d90d53906365c770a", "label": "EUBA_40", "name": "ADSL - 40kbps w/out POTS" },
+        { "_id": "5a2de4be90d53906365c7765", "label": "EUBA_90", "name": "ADSL - 90kbps w/out POTS" },
+        { "_id": "5a2de4d990d53906365c77db", "label": "EUBA_180", "name": "ADSL - 180kbps w/out POTS" }
+      ]
+    }
+  ],
+  "vendorServices": [
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029422",
+      "ontId": "ONT009815567",
+      "isOwnerByCustomer": false
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030587",
+      "ontId": "ONT009541720",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000051",
+      "ontId": "ONT005448095",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000001",
+      "ontId": "ONT003398852",
+      "isOwnerByCustomer": false
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029992",
+      "ontId": "ONT002329137",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000594",
+      "ontId": "ONT003982763",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000677",
+      "ontId": "ONT005004208",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000887",
+      "ontId": "ONT001327689",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029532",
+      "ontId": "ONT003588491",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001174",
+      "ontId": "ONT002830511",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029707",
+      "ontId": "ONT001240225",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001634",
+      "ontId": "ONT008195197",
+      "isOwnerByCustomer": false
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636026970",
+      "ontId": "ONT007394929",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001576",
+      "ontId": "ONT002156328",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001577",
+      "ontId": "ONT003499785",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001657",
+      "ontId": "ONT006423162",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001244",
+      "ontId": "ONT000456418",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029748",
+      "ontId": "ONT004967874",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000295",
+      "ontId": "ONT005541925",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000552",
+      "ontId": "ONT000276697",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030259",
+      "ontId": "ONT002087988",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000695",
+      "ontId": "ONT004969301",
+      "isOwnerByCustomer": false
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000782",
+      "ontId": "ONT006696305",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001098",
+      "ontId": "ONT006376687",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001188",
+      "ontId": "ONT004071484",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030572",
+      "ontId": "ONT008636033",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029726",
+      "ontId": "ONT008977649",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000886",
+      "ontId": "ONT001817895",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001099",
+      "ontId": "ONT005209149",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001249",
+      "ontId": "ONT003995887",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001330",
+      "ontId": "ONT009705236",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030409",
+      "ontId": "ONT006745183",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000478",
+      "ontId": "ONT008110096",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000680",
+      "ontId": "ONT006169046",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000744",
+      "ontId": "ONT001769952",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000868",
+      "ontId": "ONT007170948",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000904",
+      "ontId": "ONT004877874",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001024",
+      "ontId": "ONT008987304",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029578",
+      "ontId": "ONT003380283",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001648",
+      "ontId": "ONT009693783",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029807",
+      "ontId": "ONT001015713",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029895",
+      "ontId": "ONT005033659",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029952",
+      "ontId": "ONT009136743",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029955",
+      "ontId": "ONT006834038",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029956",
+      "ontId": "ONT009451899",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029958",
+      "ontId": "ONT003651956",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030033",
+      "ontId": "ONT007802799",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030133",
+      "ontId": "ONT006880734",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636027176",
+      "ontId": "ONT005728215",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636027205",
+      "ontId": "ONT003672506",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030408",
+      "ontId": "ONT001815227",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030474",
+      "ontId": "ONT001436206",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001476",
+      "ontId": "ONT004370996",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030589",
+      "ontId": "ONT008877151",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030590",
+      "ontId": "ONT006049920",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636030591",
+      "ontId": "ONT005495088",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001608",
+      "ontId": "ONT006899334",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636027985",
+      "ontId": "ONT006920277",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636027697",
+      "ontId": "ONT006403359",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000615",
+      "ontId": "ONT002793550",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000627",
+      "ontId": "ONT007453790",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000639",
+      "ontId": "ONT006955767",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000688",
+      "ontId": "ONT005435962",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637000923",
+      "ontId": "ONT003338783",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1636029744",
+      "ontId": "ONT007497947",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001109",
+      "ontId": "ONT007407983",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001108",
+      "ontId": "ONT000314330",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001096",
+      "ontId": "ONT000666465",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001104",
+      "ontId": "ONT004845755",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001134",
+      "ontId": "ONT002871657",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001173",
+      "ontId": "ONT002671213",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001101",
+      "ontId": "ONT001893154",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001110",
+      "ontId": "ONT004152637",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": false,
+      "id": "1637001111",
+      "ontId": "ONT004850123",
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Fibre",
+      "hasInflightOrder": true,
+      "id": "1636028127",
+      "ontId": "ONT009815567",
+      "order": [
+        {
+          "id": "100123226",
+          "type": "Connect Primary",
+          "status": "Acknowledged",
+          "subStatus": "Received",
+          "timing": [{ "name": "CONNECT_RFS_DATE_TIME", "dateTime": "2018-07-27T18:00:00.000Z" }]
+        }
+      ],
+      "isOwnerByCustomer": true
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Copper",
+      "hasInflightOrder": false,
+      "name": "Copper Service - POTS",
+      "id": "95550255",
+      "ontId": "POTS",
+      "isOwnerByCustomer": false
+    },
+    {
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "technology": "Copper",
+      "hasInflightOrder": false,
+      "name": "Copper Service - Broadband",
+      "id": "1684845531",
+      "ontId": "Switch - MTL3 ",
+      "isOwnerByCustomer": false
+    }
+  ],
+  "existingServices": [],
+  "circuitTerminations": [
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009815567",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 2,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009541720",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005448095",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003398852",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002329137",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003982763",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005004208",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001327689",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003588491",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002830511",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001240225",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008195197",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007394929",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002156328",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003499785",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006423162",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT000456418",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004967874",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005541925",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT000276697",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002087988",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004969301",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006696305",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006376687",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004071484",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008636033",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008977649",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001817895",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005209149",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003995887",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009705236",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006745183",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008110096",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006169046",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001769952",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007170948",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004877874",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008987304",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003380283",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009693783",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001015713",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005033659",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009136743",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006834038",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT009451899",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003651956",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007802799",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006880734",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005728215",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003672506",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001815227",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001436206",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004370996",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT008877151",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006049920",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005495088",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006899334",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006920277",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006403359",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002793550",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007453790",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT006955767",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT005435962",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT003338783",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007497947",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT007407983",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT000314330",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT000666465",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004845755",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002871657",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT002671213",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT001893154",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004152637",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Fibre",
+      "vendorCircuitId": "ONT004850123",
+      "circuitStatus": "Intact",
+      "activeServiceCount": 1,
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" }
+    },
+    {
+      "technology": "Copper",
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "vendorCircuitId": "95550255 (1684845531)",
+      "circuitStatus": "Active",
+      "activeServiceCount": 1
+    },
+    {
+      "technology": "Copper",
+      "vendor": { "_id": "5d01c329f4dd3a48e74f0881", "name": "Chorus" },
+      "vendorCircuitId": "1684845531 (95550255)",
+      "circuitStatus": "Active",
+      "activeServiceCount": 1
+    }
+  ]
+}

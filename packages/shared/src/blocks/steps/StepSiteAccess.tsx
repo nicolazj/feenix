@@ -12,8 +12,8 @@ const StepSiteAccess = () => {
   const { next, prev } = useContext(ScreensContext);
   const { updateForm, form } = useContext(FormContext);
 
-  const termLocation = useField({
-    defaultValue: form.termLocation,
+  const demarc = useField({
+    defaultValue: form.demarc,
     required: true,
   });
   const siteAccessInformation = useField({
@@ -23,12 +23,12 @@ const StepSiteAccess = () => {
 
   function onSubmit() {
     updateForm({
-      termLocation: termLocation.value,
+      demarc: demarc.value,
       siteAccessInformation: siteAccessInformation.value,
     });
   }
   const jform = useForm({
-    fields: [termLocation, siteAccessInformation],
+    fields: [demarc, siteAccessInformation],
     onSubmit: onSubmit,
   });
   const goNext = () => {
@@ -46,7 +46,7 @@ const StepSiteAccess = () => {
           <JInput
             label="Circuit Termination Location"
             caption="The location where you would like the Fibre box installed"
-            {...termLocation.props}
+            {...demarc.props}
           />
         </View>
         <View style={styles.formControl}>
