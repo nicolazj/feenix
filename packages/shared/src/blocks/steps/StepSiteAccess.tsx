@@ -9,7 +9,6 @@ import { useOrderStore } from '../../store/order';
 import styles from './styles';
 
 const StepSiteAccess = () => {
-  console.log('StepSiteAccess')
   const { next, prev } = useContext(ScreensContext);
 
   const { updateForm, form} = useOrderStore(({ updateForm, form }) => ({

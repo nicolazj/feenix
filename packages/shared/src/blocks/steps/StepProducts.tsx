@@ -25,8 +25,6 @@ const getProductVariants = (prequal: T_ADDR_PREQUAL, tailProductId: string) => {
   return [];
 };
 const StepProducts = () => {
-  console.log('StepProducts');
-
   const { prequal, updateForm, form } = useOrderStore(({ prequal, updateForm, form }) => ({
     prequal,
     updateForm,
@@ -50,8 +48,6 @@ const StepProducts = () => {
   }, [tailProductId.value]);
 
   function onSubmit() {
-    console.log('onSubmit');
-
     updateForm({
       tailProductId: tailProductId.value,
       tailVariantId: tailVariantId.value,
@@ -75,18 +71,20 @@ const StepProducts = () => {
       <View style={styles.spacer}>
         <Text category="h4">Available products</Text>
         {prequal ? (
-          <>
-            <View style={styles.formControl}>
-              <JSelect label="Products:" options={getProductOptions(prequal)} {...tailProductId.props} />
-            </View>
-            <View style={styles.formControl}>
-              <JSelect
-                label="Products variant:"
-                options={getProductVariants(prequal, tailProductId.value)}
-                {...tailVariantId.props}
-              />
-            </View>
-          </>
+          prequal.availableQuickOrderProducts.length > 0 ? (
+            <>
+              <View style={styles.formControl}>
+                <JSelect label="Products:" options={getProductOptions(prequal)} {...tailProductId.props} />
+              </View>
+              <View style={styles.formControl}>
+                <JSelect
+                  label="Products variant:"
+                  options={getProductVariants(prequal, tailProductId.value)}
+                  {...tailVariantId.props}
+                />
+              </View>
+            </>
+          ) : <Text>No available products</Text>
         ) : null}
       </View>
 

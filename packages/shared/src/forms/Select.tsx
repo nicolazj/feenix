@@ -10,17 +10,16 @@ export const JSelect: React.FC<
     label: string;
     options: T_OPTION[];
   }
-> = ({ options, value, onChange }) => {
+> = ({ options, value, label, onChange }) => {
   const options_ = options.map(op => ({ text: op.title, value: op.value }));
   return (
     <Select
       data={options_}
+      label={label}
       selectedOption={options_.find(op => op.value === value)}
       onSelect={(op: any) => {
-        console.log('onChange',op)
         onChange(op.value);
       }}
-     
     />
   );
 };

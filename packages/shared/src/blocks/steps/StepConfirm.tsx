@@ -91,7 +91,6 @@ const StepConfirm = () => {
     const product = prequal!.availableQuickOrderProducts.find(
       product => product.tailProduct._id === form.tailProductId
     );
-    console.log(product);
     const payload = {
       addressId: prequal!.address._id,
       aim: form.aim,
@@ -148,7 +147,7 @@ const StepConfirm = () => {
 
           {aim.value === 'Migrate' && (
             <JSelect
-              label="Existing Service"
+              label="Existing Service Id"
               options={existingServices.map(s => ({
                 title: `${s.vendor.name}-${s.id}`,
                 value: s.id,

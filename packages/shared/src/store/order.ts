@@ -41,8 +41,9 @@ const orderStore = create<Store>((set, get) => ({
     set({ form });
   },
   updateTUI: async (tui: string) => {
-    set({ tui, prequaling: true });
+    set({ tui, prequal: undefined });
     if (tui.length > 0) {
+      set({ prequaling: true });
       const prequal = await api.address.prequal(tui);
       set({ prequal, prequaling: false });
     }
