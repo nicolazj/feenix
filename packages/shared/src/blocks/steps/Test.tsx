@@ -1,27 +1,75 @@
 import React, { Component, useState } from 'react';
+import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
-import { Button, Layout, Modal, Text } from 'react-native-ui-kitten';
+import { Button, Layout, Modal, Select, Text } from 'react-native-ui-kitten';
 
+import { JSelect } from '../../forms';
 import styles from './styles';
+
+export class SelectContainer extends React.Component {
+  items = [{ text: 'Option 1' }];
+
+  state = {
+    selectedOption: null,
+  };
+
+  onSelect = selectedOption => {
+    this.setState({ selectedOption });
+  };
+
+  render() {
+    return <Select data={this.items} selectedOption={this.state.selectedOption} onSelect={this.onSelect} />;
+  }
+}
 
 const Test = () => {
   const [modalVisible, modalVisibleSet] = useState(false);
+  const tailProductId = useField({
+    defaultValue: '',
+    required: true,
+  });
+
+  function onSubmit() {
+    console.log('onSubmit');
+  }
+  const jform = useForm({
+    fields: [tailProductId],
+    onSubmit: onSubmit,
+  });
 
   return (
     <View style={styles.section}>
-     <View style={styles.spacer}>
+      <View style={styles.spacer}>
         <Text category="h4">Confirm order</Text>
         <View style={styles.formControl}>
-          
-       
+          <SelectContainer />
+          <JSelect
+            label="Products:"
+            options={[
+              {
+                title: '123',
+                value: '1',
+              },
+            ]}
+            value={tailProductId.props.value}
+            onChange={tailProductId.props.onBlur}
+          />
+
+          <JSelect
+            label="Products:"
+            options={[
+              {
+                title: '123',
+                value: '1',
+              },
+            ]}
+            {...tailProductId.props}
+          />
         </View>
       </View>
 
       <View style={styles.buttonBlock}>
-       
-        <Button onPress={()=>modalVisibleSet(true)}>
-          Place order
-        </Button>
+        <Button onPress={() => modalVisibleSet(true)}>Place order</Button>
       </View>
       <Modal
         visible={modalVisible}

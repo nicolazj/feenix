@@ -10,7 +10,23 @@ import { useOrderStore } from '../../store/order';
 import { T_ADDR_PREQUAL } from '../../types';
 import styles from './styles';
 
-const StepProducts = () => {
+const getProductOptions = (prequal: T_ADDR_PREQUAL) => {
+  return prequal.availableQuickOrderProducts.map(product => ({
+    title: product.tailProduct.name,
+    value: product.tailProduct._id,
+  }));
+};
+
+const getProductVariants = (prequal: T_ADDR_PREQUAL, tailProductId: string) => {
+  const product = prequal.availableQuickOrderProducts.find(product => product.tailProduct._id === tailProductId);
+  if (product) {
+    return product.tailVariants.map(va => ({ title: va.name, value: va._id }));
+  }
+  return [];
+};
+const StepProducts =  () => {
+  console.log('StepProducts');
+
   const { prequal, updateForm, form } = useOrderStore(({ prequal, updateForm, form }) => ({
     prequal,
     updateForm,
@@ -34,6 +50,8 @@ const StepProducts = () => {
   }, [tailProductId.value]);
 
   function onSubmit() {
+    console.log('onSubmit');
+
     updateForm({
       tailProductId: tailProductId.value,
       tailVariantId: tailVariantId.value,
@@ -50,21 +68,6 @@ const StepProducts = () => {
   const goPrev = () => {
     jform.submit();
     prev();
-  };
-
-  const getProductOptions = (prequal: T_ADDR_PREQUAL) => {
-    return prequal.availableQuickOrderProducts.map(product => ({
-      title: product.tailProduct.name,
-      value: product.tailProduct._id,
-    }));
-  };
-
-  const getProductVariants = (prequal: T_ADDR_PREQUAL, tailProductId: string) => {
-    const product = prequal.availableQuickOrderProducts.find(product => product.tailProduct._id === tailProductId);
-    if (product) {
-      return product.tailVariants.map(va => ({ title: va.name, value: va._id }));
-    }
-    return [];
   };
 
   return (
@@ -97,4 +100,4 @@ const StepProducts = () => {
   );
 };
 
-export default StepProducts;
+export default React.memo(StepProducts) ;

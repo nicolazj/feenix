@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useField, useForm } from 'react-jeff';
 import { View } from 'react-native';
-import { Button, Text } from 'react-native-ui-kitten';
+import { Button } from 'react-native-ui-kitten';
 
 import { ScreensContext } from '../../components/Screens';
 import { JInput } from '../../forms';
@@ -9,6 +9,7 @@ import { useOrderStore } from '../../store/order';
 import styles from './styles';
 
 const StepSiteAccess = () => {
+  console.log('StepSiteAccess')
   const { next, prev } = useContext(ScreensContext);
 
   const { updateForm, form} = useOrderStore(({ updateForm, form }) => ({

@@ -10,13 +10,12 @@ import StepProducts from './steps/StepProducts';
 import StepSiteAccess from './steps/StepSiteAccess';
 import StepSubscriberInfo from './steps/StepSubscriberInfo';
 
-// import Test from './steps/Test';
-
 const Steppers = () => {
   return (
     <Screens style={{ flex: 1, overflow: 'hidden' }}>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <StepSubscriberInfo />
+        {/* <Test /> */}
       </ScrollView>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
         <StepProducts />
