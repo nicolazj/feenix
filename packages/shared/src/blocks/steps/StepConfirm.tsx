@@ -27,8 +27,13 @@ const getProductInfo = (prequal: T_ADDR_PREQUAL | undefined, selectedProductId: 
           const connectEnabled =
             serviceStatus === 'unknown' || (installStatus === 'installed' && serviceStatus === 'none');
           const migrateEnabled = serviceStatus === 'active' || serviceStatus === 'unknown';
-          const existingServices = prequal!.vendorServices.filter(v => v.technology === selectedTech!.technology);
-
+          const existingServices = prequal.vendorServices
+            .filter(v => v.technology === selectedTech!.technology)
+            .sort((a, b) => {
+              if (a.id < b.id) return -1;
+              if (a.id > b.id) return 1;
+              return 0;
+            });
           return {
             connectEnabled,
             migrateEnabled,
