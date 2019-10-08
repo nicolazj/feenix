@@ -24,7 +24,7 @@ const getProductVariants = (prequal: T_ADDR_PREQUAL, tailProductId: string) => {
   }
   return [];
 };
-const StepProducts =  () => {
+const StepProducts = () => {
   console.log('StepProducts');
 
   const { prequal, updateForm, form } = useOrderStore(({ prequal, updateForm, form }) => ({
@@ -100,4 +100,4 @@ const StepProducts =  () => {
   );
 };
 
-export default React.memo(StepProducts) ;
+export default StepProducts;
